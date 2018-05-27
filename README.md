@@ -9,3 +9,4 @@ Making something that functions like meetup
 ## Team Members
 
 Sosodope
+Ivan
