@@ -5,3 +5,7 @@ Add-project-description-here | Voyage-5 | chingu.io
 # Meetup-ish Clone
 
 Making something that functions like meetup
+
+## Team Members
+
+Sosodope
