@@ -3,3 +3,31 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+header {
+  background: #fff;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  align-items: center;
+}
+header h1 {
+  text-indent: -100000px;
+  font-size: 5px;
+}
+header .logo {
+  width: 150%;
+}
+nav {
+  grid-column: 12 / span 4;
+  display: grid;
+  grid-auto-flow: column;
+}
+nav a {
+  text-decoration: none;
+  color: rgba(46, 62, 72, 0.6);
+}
+nav a:hover {
+  color: #00a2c7;
+}
+.brand {
+  grid-column-start: 2;
+}
