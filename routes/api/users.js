@@ -9,7 +9,6 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
 
 const passport = require("passport");
 //below refers to /api/users/test
@@ -93,7 +92,7 @@ router.post("/login", (req, res) => {
         //sign token
         jwt.sign(
           payload,
-          keys.secretOrKey,
+          process.env.secretOrKey,
           { expiresIn: 3600 },
           (err, token) => {
             //issue a token here
