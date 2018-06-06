@@ -9,6 +9,9 @@ import { MyProvider } from '../containers/context.js';//All consumers point to t
 const Router = () => {
   return (
     //Provider "provides" all MyContext.Consumer inside its scope with global data
+    
+const Router = () => {
+  return (
     <MyProvider>
     <BrowserRouter>
       <Switch>
