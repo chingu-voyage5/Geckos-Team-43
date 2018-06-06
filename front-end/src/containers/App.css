@@ -36,8 +36,9 @@
 }
 
 .navbar{
-  width: 100vw;
   border-bottom: solid 1px black;
+  width: 100%;
+  text-align: center;
 }
 
 .navbar p {
@@ -75,4 +76,68 @@
   height: 30px;
   font-size: 18px;
   margin: 15px 0 0 0;
+
+}
+
+.user-profile{
+  margin: 2%;
+  display: grid;
+  grid-gap: 25px;
+  width: 100vw;
+  justify-content: center;
+  grid-template-areas: 
+  "h h h h"
+  "i i i p"
+  "i i i p"
+  "in in in b"
+}
+
+.nav-user {
+  grid-area: h;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px black;
+  width: 90vw;
+}
+
+.nav-user button {
+  margin-right: 7.5%;
+  height: 25px;
+}
+
+.user-info{
+  grid-area: i;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.img-container {
+  grid-area: p;
+  display: flex;
+  justify-content:center;
+}
+
+.interests{
+  grid-area: in;
+
+}
+
+
+
+.user-bio{
+  grid-area: b;
+  display: flex;
+  justify-content:center;
+}
+
+.user-bio p {
+  width: 200px;
+  text-align: justify;
+  border: solid 1px black;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }

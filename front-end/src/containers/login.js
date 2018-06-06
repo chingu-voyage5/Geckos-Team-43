@@ -1,39 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { MyContext } from './context.js';//importing the context
 import './App.css';
 
-class Login extends Component {
-	constructor(props){
-      super(props)
-      this.state = { name: '', email: '', password: ''};
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(e){
-      const target = e.target;
-      const value = target.value;
-      const name = target.name;
-
-      this.setState({[name]: value});
-    }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    alert(`Confirmation email sent to ${this.state.email}`);
-    this.setState({ email: '', password: ''})
-  }
-  render() {
-    return (
-      <div className="signup-box">
-            <div className="navbar"><p>Login</p></div>
-            <form onSubmit={this.handleSubmit} className="signup-form">
-              <input name="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" type="text"/>
-              <input name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" type="text"/>
-              <input type="submit"/>
-            </form>
-        </div>
-    );
-  }
-}
+// login can be a stateless component now since it just receives the props from the Context
+const Login = () => (
+      //anything wrapped inside MyContext.Consumer will receive the props from the global context
+            <MyContext.Consumer>
+              {user => (
+                <div className="signup-box">
+                <div className="navbar"><p>Login</p></div>
+                <form onSubmit={user.handleSubmit} className="signup-form">
+                  <input name="email" onChange={user.handleChange} value={user.state.email} placeholder="Email" type="text"/>
+                  <input name="password" onChange={user.handleChange} value={user.state.password} placeholder="Password" type="text"/>
+                  <input type="submit"/>
+                </form>
+               </div>
+                )}
+            </MyContext.Consumer>      
+  )
 
 export default Login;
