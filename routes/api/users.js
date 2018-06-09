@@ -11,6 +11,11 @@ const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
 
 const passport = require("passport");
+
+//validation
+const validateUserRegisterInput = require("../../validation/register");
+const validateUserLoginInput = require("../../validation/login");
+
 //below refers to /api/users/test
 
 //@route  GET api/users/test
@@ -24,7 +29,10 @@ router.get("/test", (req, res) => res.json({ msg: "Users works" }));
 */
 
 router.post("/register", (req, res) => {
-  let errors = {};
+  const { errors, isValid } = validateUserRegisterInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = "Email already exists";
@@ -68,7 +76,10 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  let errors = {};
+  const { errors, isValid } = validateUserLoginInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   //Find user by email
   User.findOne({
     email
