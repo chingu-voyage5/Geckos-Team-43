@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 
 //db config
-const db = process.env.MongoURI;
+const db = process.env.mongoURI;
 mongoose
   .connect(db)
   .then(() => console.log("Connected to Mongo"))
