@@ -8,6 +8,7 @@ header {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   align-items: center;
+  grid-template-rows: 95px;
 }
 header h1 {
   text-indent: -100000px;
@@ -17,13 +18,15 @@ header .logo {
   width: 150%;
 }
 nav {
-  grid-column: 12 / span 4;
+  grid-column: 14 / span 4;
   display: grid;
   grid-auto-flow: column;
+  grid-gap: 1px;
 }
 nav a {
   text-decoration: none;
   color: rgba(46, 62, 72, 0.6);
+  align-self: center;
 }
 nav a:hover {
   color: #00a2c7;
@@ -57,4 +60,9 @@ nav a:hover {
 }
 .banner h5 {
   font-size: 1.2em;
+}
+.profile-photo {
+  width: 30%;
+  border-radius: 50%;
+  grid-column: 15;
 }

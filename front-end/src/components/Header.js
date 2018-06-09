@@ -6,26 +6,7 @@ import "../containers/index.css";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      status: "logged-off"
-    };
-    this.logIn = this.logIn.bind(this);
-    this.logOff = this.logOff.bind(this);
   }
-  logIn = () => {
-    this.setState((currentState, props) => {
-      return {
-        status: "logged-on"
-      };
-    });
-  };
-  logOff = () => {
-    this.setState((currentState, props) => {
-      return {
-        status: "logged-off"
-      };
-    });
-  };
   render() {
     return (
       <header>
@@ -34,7 +15,10 @@ class Header extends React.Component {
           <h1>{this.props.title}</h1>
         </Link>
         <nav>
-          <Link to={"/login"}>{this.props.login}</Link>
+          <Link to={"/login"} logOff={this.logOff}>
+            {this.props.login}
+          </Link>
+          <img src={this.props.userProfile} className="profile-photo" />
           <Link to={"/signup"}>{this.props.signup}</Link>
         </nav>
       </header>
