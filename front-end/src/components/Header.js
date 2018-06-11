@@ -4,6 +4,55 @@ import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
 
 class Header extends React.Component {
+  componentDidMount() {
+    const data = {
+      name: "test1",
+      email: "test1@gmail.com",
+      password: "123456",
+      password2: "123456"
+    };
+
+    const dummyUser = {
+      email: "vlad@gmail.com",
+      password: "123456"
+    };
+
+    let token = "";
+
+    fetch("api/users/test")
+      .then(data => data.json())
+      .then(test => {
+        console.log("testing api/users/test route");
+        console.log(test);
+      })
+      .catch(err => console.log("api/users/test route failed" + err));
+
+    // fetch("api/users/register", {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   mode: "cors"
+    // })
+    //   .then(data => data.json())
+    //   .then(user => {
+    //     console.log(user);
+    //     console.log(data);
+    //   })
+    //   .catch(err => console.log(err));
+
+    fetch("api/users/login", {
+      method: "POST",
+      body: JSON.stringify(dummyUser),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "cors"
+    })
+      .then(data => data.json())
+      .then(user => console.log(user));
+  }
   constructor(props) {
     super(props);
   }
