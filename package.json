@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server"
+    "make": "source ./config/app-env",
+    "start": "source ./config/app-env && nodemon server"
   },
   "author": "",
   "license": "ISC",

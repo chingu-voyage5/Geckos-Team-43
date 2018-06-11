@@ -5,19 +5,21 @@ import "../containers/index.css";
 
 class Header extends React.Component {
   componentDidMount() {
-    const data = {
-      name: "test1",
-      email: "test1@gmail.com",
-      password: "123456",
-      password2: "123456"
-    };
+    // const data = {
+    //   name: "test1",
+    //   email: "test1@gmail.com",
+    //   password: "123456",
+    //   password2: "123456"
+    // };
 
     const dummyUser = {
       email: "vlad@gmail.com",
       password: "123456"
     };
 
-    let token = "";
+    //@route  GET api/users/test
+    //@desc   test route for users
+    //@access Public
 
     fetch("api/users/test")
       .then(data => data.json())
@@ -42,6 +44,10 @@ class Header extends React.Component {
     //   })
     //   .catch(err => console.log(err));
 
+    //@route  POST api/users/login
+    //@desc   login with test user
+    //@access Public
+
     fetch("api/users/login", {
       method: "POST",
       body: JSON.stringify(dummyUser),
@@ -52,6 +58,10 @@ class Header extends React.Component {
     })
       .then(data => data.json())
       .then(user => console.log(user));
+
+    //@route  POST&GET api/users/login and api/users/current
+    //@desc   login with test user and check they're logged in
+    //@access Private
 
     fetch("api/users/login", {
       method: "POST",
