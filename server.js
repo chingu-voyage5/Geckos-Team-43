@@ -5,12 +5,15 @@ const profile = require("./routes/api/profile");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const logger = require("morgan");
-
+const cors = require("cors");
 const app = express();
 
 //setup middleware to get req.body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//setup cors
+app.use(cors());
 
 //log activity in console with morgan
 app.use(logger("dev"));
