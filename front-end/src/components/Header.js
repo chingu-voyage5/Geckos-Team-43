@@ -52,6 +52,30 @@ class Header extends React.Component {
     })
       .then(data => data.json())
       .then(user => console.log(user));
+
+    fetch("api/users/login", {
+      method: "POST",
+      body: JSON.stringify(dummyUser),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "cors"
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(user => {
+        let bearer = user.token;
+        console.log("survey says!", bearer);
+        return fetch("api/users/current", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: bearer
+          },
+          mode: "cors"
+        }).then(current => console.log(current));
+      });
   }
   constructor(props) {
     super(props);
