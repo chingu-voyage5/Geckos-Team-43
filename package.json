@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "make": "source ./config/app-env",
-    "test": "grunt mochaTest",
+    "test": "source ./config/app-env && grunt mochaTest",
     "start": "source ./config/app-env && nodemon server"
   },
   "author": "",
