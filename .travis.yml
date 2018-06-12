@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "9"
 
-before_install: \#!/bin/bash source ./config/app-env && npm install -g grunt-cli
-install: npm install
-before_script: grunt mochaTest
+# before_install: npm install -g grunt-cli
+# install: npm install
+# before_script: grunt mochaTest
