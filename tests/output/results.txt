@@ -2,13 +2,13 @@
 [0m[0m
 Listening on 10000
 [0m  test GET  on api/profile/test route[0m
-[0mGET /api/profile/test [32m200 [0m8.018 ms - 23[0m
-  [32m  ✓[0m[90m shows the test route works[0m[33m (54ms)[0m
+[0mGET /api/profile/test [32m200 [0m7.214 ms - 23[0m
+  [32m  ✓[0m[90m shows the test route works[0m[33m (45ms)[0m
 
 [0m  test GET  on api/users/test route[0m
-[0mGET /api/users/test [32m200 [0m0.601 ms - 21[0m
+[0mGET /api/users/test [32m200 [0m1.184 ms - 21[0m
   [32m  ✓[0m[90m shows the test route works[0m
 
 
-[92m [0m[32m 2 passing[0m[90m (79ms)[0m
+[92m [0m[32m 2 passing[0m[90m (67ms)[0m
 
