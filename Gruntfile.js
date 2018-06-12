@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       test: {
         options: {
           reporter: "spec",
-          captureFile: "results.txt", // Optionally capture the reporter output to a file
+          captureFile: "tests/output/results.txt", // Optionally capture the reporter output to a file
           quiet: false // Optionally suppress output to standard out (defaults to false)
         },
         src: ["tests/*.js"]
