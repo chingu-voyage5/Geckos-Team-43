@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
+import { Button } from "react-materialize";
 import "../containers/index.css";
 
 class Header extends React.Component {
@@ -14,7 +15,7 @@ class Header extends React.Component {
           <img src={logo} className="logo" alt="logo" />
           <h1>{this.props.title}</h1>
         </Link>
-        <nav>
+        <nav className="navbar">
           <Link to={"/login"} logout={this.logout}>
             {this.props.login}
           </Link>

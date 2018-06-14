@@ -7,7 +7,8 @@ class MyProvider extends Component {
   state = {
     name: "",
     email: "",
-    password: ""
+    password: "",
+    bio: ""
   };
 
   render() {
@@ -20,12 +21,17 @@ class MyProvider extends Component {
             const target = e.target;
             const value = target.value;
             const name = target.name;
+            const bio = target.bio;
 
             this.setState({ [name]: value });
           },
           handleSubmit: e => {
             e.preventDefault();
             alert(`Confirmation email sent to ${this.state.email}`);
+          },
+          addBio: e => {
+            e.preventDefault();
+            this.setState({ bio: this.state.bio });
           }
         }}
       >

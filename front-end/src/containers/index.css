@@ -7,7 +7,6 @@ header {
   background: #fff;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
-  align-items: center;
   grid-template-rows: 95px;
 }
 header h1 {
@@ -17,11 +16,14 @@ header h1 {
 header .logo {
   width: 150%;
 }
-nav {
+.navbar {
   grid-column: 14 / span 4;
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1px;
+  padding-top: 20px;
+  background-color: 0 !important;
+  box-shadow: none !important;
 }
 nav a {
   text-decoration: none;
@@ -65,4 +67,8 @@ nav a:hover {
   width: 30%;
   border-radius: 50%;
   grid-column: 15;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
 }

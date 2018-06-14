@@ -32,18 +32,11 @@
   font-weight: bold;
 }
 
-.signup-box{
+.signup-box {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-}
-
-.navbar{
-  border-bottom: solid 1px black;
-  width: 100%;
-  text-align: center;
 }
 
 .navbar p {
@@ -62,49 +55,40 @@
   height: 250px;
   border-radius: 50px;
   margin: 2%;
-
 }
 
-.signup-form input{
-
+.signup-form input {
 }
 
-.signup-form input[type=text]{
+.signup-form input[type="text"] {
   width: 300px;
   height: 30px;
   font-size: 20px;
   margin: 5px 0;
 }
 
-.signup-form input[type=submit]{
+.signup-form input[type="submit"] {
   width: 100px;
   height: 30px;
   font-size: 18px;
   margin: 15px 0 0 0;
-
 }
 
-.user-profile{
-  margin: 2%;
+.user-profile {
   display: grid;
   grid-gap: 25px;
   width: 100vw;
   justify-content: center;
-  grid-template-areas: 
-  "h h h h"
-  "i i i p"
-  "i i i p"
-  "in in in b"
+  grid-template-columns: repeat(8, 1fr);
 }
 
 .nav-user {
-  grid-area: h;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: solid 1px black;
   width: 90vw;
+  grid-column: 7 / -1;
 }
 
 .nav-user button {
@@ -112,37 +96,32 @@
   height: 25px;
 }
 
-.user-info{
-  grid-area: i;
+.user-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-column: 1 / span 2;
 }
 
 .img-container {
-  grid-area: p;
   display: flex;
-  justify-content:center;
+  justify-content: center;
+  grid-column: 7 / span 1;
 }
 
-.interests{
-  grid-area: in;
-
+.interests {
+  grid-column: 1 / span 6;
 }
 
-
-
-.user-bio{
-  grid-area: b;
+.user-bio {
   display: flex;
-  justify-content:center;
+  justify-content: center;
+  grid-column: 7;
+  flex-direction: column;
 }
 
 .user-bio p {
   width: 200px;
   text-align: justify;
-  border: solid 1px black;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
