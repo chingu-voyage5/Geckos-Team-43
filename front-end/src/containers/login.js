@@ -12,7 +12,7 @@ const Login = () => (
         <div className="navbar">
           <p>Login</p>
         </div>
-        <form onSubmit={user.handleSubmit} className="signup-form">
+        <form onSubmit={user.handleLogin} className="signup-form">
           <input
             name="email"
             onChange={user.handleChange}

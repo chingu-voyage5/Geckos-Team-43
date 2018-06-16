@@ -9,7 +9,7 @@ const hide = {
   display: "none"
 };
 class Profile extends Component {
-  componentDidMount() {
+  /*componentDidMount() {
     // const data = {
     //   name: "test1",
     //   email: "test1@gmail.com",
@@ -91,7 +91,7 @@ class Profile extends Component {
           mode: "cors"
         }).then(current => console.log(current));
       });
-  }
+  }*/
 
   constructor(props) {
     super(props);

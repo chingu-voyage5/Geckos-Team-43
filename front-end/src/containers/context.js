@@ -8,6 +8,7 @@ class MyProvider extends Component {
     name: "",
     email: "",
     password: "",
+    password2:"",
     bio: ""
   };
 
@@ -25,9 +26,60 @@ class MyProvider extends Component {
 
             this.setState({ [name]: value });
           },
-          handleSubmit: e => {
+          handleRegister: e => {
             e.preventDefault();
-            alert(`Confirmation email sent to ${this.state.email}`);
+            const newUser = {
+              name: this.state.name,
+              email: this.state.email,
+              password: this.state.password,
+              password2: this.state.password2
+            }
+
+            fetch("api/users/register", {
+            method: "POST",
+            body: JSON.stringify(newUser),
+            headers: {
+            "Content-Type": "application/json"
+            },
+             mode: "cors"
+           })
+            .then(data => data.json())
+            .then(user => {
+              console.log(user);
+            })
+            .catch(err => console.log(err));
+            
+          },
+          handleLogin: e => {
+            e.preventDefault();
+            const user = {
+              email: this.state.email,
+              password: this.state.password
+            }
+
+            fetch("api/users/login", {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+            "Content-Type": "application/json"
+            },
+             mode: "cors"
+           })
+            .then(data => data.json())
+            .then(user => {
+              console.log(user)
+              fetch('api/users/current',{
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": user.token
+                },
+                mode: "cors"
+              })
+              .then(res => res.json())
+              .then(data => console.log(data));
+            })
+            .catch(err => console.log(err));
+            
           },
           addBio: e => {
             e.preventDefault();
