@@ -69,6 +69,9 @@ router.post(
     if (typeof req.body.skills !== "undefined") {
       profileFields.skills = req.body.skills.split(",");
     }
+    if (typeof req.body.interests !== "undefined") {
+      profileFields.interests = req.body.interests.split(",");
+    }
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
@@ -97,4 +100,21 @@ router.post(
     });
   }
 );
+
+//@route  DELETE api/profile
+//@desc   Delete user and profile
+//@access Private
+
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+        res.json({ success: true })
+      );
+    });
+  }
+);
+
 module.exports = router;

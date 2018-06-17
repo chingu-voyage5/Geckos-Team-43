@@ -32,6 +32,9 @@ const ProfileSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  interests: {
+    type: [String]
   }
 });
 
