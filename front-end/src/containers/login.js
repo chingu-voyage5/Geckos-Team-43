@@ -1,6 +1,6 @@
 import React from "react";
 import { MyContext } from "./context.js"; //importing the context
-import "./App.css";
+import "./index.css";
 import { Link, Route } from "react-router-dom";
 
 // login can be a stateless component now since it just receives the props from the Context
@@ -25,9 +25,9 @@ const Login = () => (
             onChange={user.handleChange}
             value={user.state.password}
             placeholder="Password"
-            type="text"
+            type="password"
           />
-          <input type="submit" />
+          <input type="submit" className="btn" value="Login" />
         </form>
       </div>
     )}
