@@ -1,7 +1,6 @@
 import React from "react";
 import { MyContext } from "./context.js"; //importing the context
 import "./index.css";
-import { Link, Route } from "react-router-dom";
 
 // login can be a stateless component now since it just receives the props from the Context
 const Login = () => (
