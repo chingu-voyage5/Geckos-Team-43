@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "../images/logo.svg";
-import "./App.css";
+import "./index.css";
 import UserProfile from "../components/user-profile";
 import Header from "../components/Header";
 import userProfile from "../images/User.jpeg";
