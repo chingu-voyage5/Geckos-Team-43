@@ -1,6 +1,7 @@
 import React from "react";
 import { MyContext } from "./context.js"; //importing the context
 import "./index.css";
+import { Redirect } from "react-router";
 
 // login can be a stateless component now since it just receives the props from the Context
 const Login = () => (
@@ -28,6 +29,7 @@ const Login = () => (
           />
           <input type="submit" className="btn" value="Login" />
         </form>
+        {user.fireRedirect && <Redirect to={"/user/12345"} />}
       </div>
     )}
   </MyContext.Consumer>
