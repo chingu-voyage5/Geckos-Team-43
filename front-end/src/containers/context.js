@@ -8,7 +8,7 @@ class MyProvider extends Component {
     name: "",
     email: "",
     password: "",
-    password2:"",
+    password2: "",
     bio: ""
   };
 
@@ -33,53 +33,52 @@ class MyProvider extends Component {
               email: this.state.email,
               password: this.state.password,
               password2: this.state.password2
-            }
+            };
 
             fetch("api/users/register", {
-            method: "POST",
-            body: JSON.stringify(newUser),
-            headers: {
-            "Content-Type": "application/json"
-            },
-             mode: "cors"
-           })
-            .then(data => data.json())
-            .then(user => {
-              console.log(user);
+              method: "POST",
+              body: JSON.stringify(newUser),
+              headers: {
+                "Content-Type": "application/json"
+              },
+              mode: "cors"
             })
-            .catch(err => console.log(err));
-            
+              .then(data => data.json())
+              .then(user => {
+                console.log(user);
+              })
+              .catch(err => console.log(err));
           },
           handleLogin: e => {
             e.preventDefault();
             const user = {
               email: this.state.email,
-              password: this.state.password
-            }
+              password: this.state.password,
+              fireRedirect: false
+            };
 
             fetch("api/users/login", {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-            "Content-Type": "application/json"
-            },
-             mode: "cors"
-           })
-            .then(data => data.json())
-            .then(user => {
-              console.log(user)
-              fetch('api/users/current',{
-                headers: {
-                  "Content-Type": "application/json",
-                  "Authorization": user.token
-                },
-                mode: "cors"
-              })
-              .then(res => res.json())
-              .then(data => console.log(data));
+              method: "POST",
+              body: JSON.stringify(user),
+              headers: {
+                "Content-Type": "application/json"
+              },
+              mode: "cors"
             })
-            .catch(err => console.log(err));
-            
+              .then(data => data.json())
+              .then(user => {
+                console.log(user);
+                fetch("api/users/current", {
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: user.token
+                  },
+                  mode: "cors"
+                })
+                  .then(res => res.json())
+                  .then(data => console.log(data));
+              })
+              .catch(err => console.log(err));
           },
           addBio: e => {
             e.preventDefault();
