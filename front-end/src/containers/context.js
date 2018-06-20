@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Route, Redirect, Switch } from "react-router";
+import Account from "./Account";
 
 // creates the global container tthat can be accesed by any component
 const MyContext = React.createContext();
@@ -80,9 +82,14 @@ class MyProvider extends Component {
               })
               .catch(err => console.log(err));
           },
-          addBio: e => {
+          editProfile: e => {
             e.preventDefault();
+            console.log("Clicked");
             this.setState({ bio: this.state.bio });
+            <Switch>
+              <Redirect from="/user/:userId" to="/account/:userId" />
+              <Route path="/account/:userId" component={Account} />
+            </Switch>;
           }
         }}
       >
