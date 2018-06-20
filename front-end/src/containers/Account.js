@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import logo from "../images/logo.svg";
 import "./index.css";
-import UserProfile from "../components/user-profile";
 import Header from "../components/Header";
 import userProfile from "../images/User.jpeg";
+import General from "../components/EditGeneral";
 
 const hide = {
   display: "none"
@@ -37,7 +37,7 @@ class Account extends Component {
           login={this.state.status === true ? "Log Out" : "Log In"}
           userProfile={this.state.userProfile}
         />
-        <UserProfile profileImage={this.state.userProfile} />
+        <General />
       </div>
     );
   }
