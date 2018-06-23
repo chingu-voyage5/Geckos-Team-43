@@ -29,7 +29,9 @@ const Login = () => (
           />
           <input type="submit" className="btn" value="Login" />
         </form>
-        {user.state.loggedIn ? <Redirect to={"/user/" + user.userId} /> : null}
+        {user.state.loggedIn ? (
+          <Redirect to={`/user/${user.state.userId}`} />
+        ) : null}
       </div>
     )}
   </MyContext.Consumer>

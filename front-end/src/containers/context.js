@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import userProfile from "../images/User.jpeg";
+import { Redirect } from "react-router";
 
 // creates the global container tthat can be accesed by any component
 const MyContext = React.createContext();
@@ -12,7 +14,8 @@ class MyProvider extends Component {
     bio: "",
     userId: "",
     loggedIn: false,
-    loading: true
+    loading: true,
+    userProfile: userProfile
   };
 
   render() {
@@ -50,7 +53,8 @@ class MyProvider extends Component {
                 this.setState({
                   loggedIn: true,
                   loading: false,
-                  userId: user._id
+                  userId: user._id,
+                  userProfile: `http:${user.avatar}`
                 });
                 console.log(user);
               })
@@ -60,8 +64,7 @@ class MyProvider extends Component {
             e.preventDefault();
             const user = {
               email: this.state.email,
-              password: this.state.password,
-              fireRedirect: false
+              password: this.state.password
             };
 
             fetch("api/users/login", {
@@ -88,7 +91,8 @@ class MyProvider extends Component {
                       this.setState({
                         loggedIn: true,
                         loading: false,
-                        userId: user._id
+                        userId: user._id,
+                        userProfile: `http:${user.avatar}`
                       });
                     });
                 }
@@ -112,6 +116,11 @@ class MyProvider extends Component {
           addBio: e => {
             e.preventDefault();
             this.setState({ bio: this.state.bio });
+          },
+          logout: e => {
+            console.log("Loggin out");
+            <Redirect to="/login" />;
+            this.setState({ loggedIn: false });
           }
         }}
       >
