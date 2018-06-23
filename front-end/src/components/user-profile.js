@@ -36,7 +36,7 @@ const UserProfile = () => (
         </div>
         <div className="user-bio">
           <p>{user.state.bio ? user.state.bio : ""}</p>
-          <Button waves="light" onClick={user.addBio}>
+          <Button className="addBio" waves="light" onClick={user.addBio}>
             Add Bio
           </Button>
         </div>
