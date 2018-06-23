@@ -1,7 +1,7 @@
 import React from "react";
 import { MyContext } from "./context.js"; //importing the context
 import "./index.css";
-import { Redirect } from 'react-router';
+import { Redirect } from "react-router";
 
 // login can be a stateless component now since it just receives the props from the Context
 const Signup = () => (
@@ -43,7 +43,9 @@ const Signup = () => (
           />
           <input type="submit" className="btn" value="Sign Up" />
         </form>
-        {user.state.loggedIn ? <Redirect to="/account"/> : null}
+        {user.state.loggedIn ? (
+          <Redirect to={`/user/${user.state.userId}`} />
+        ) : null}
       </div>
     )}
   </MyContext.Consumer>

@@ -8,14 +8,11 @@ class MyProvider extends Component {
     name: "",
     email: "",
     password: "",
-<<<<<<< HEAD
-    password2:"",
-    bio: "",
-    loggedIn: false
-=======
     password2: "",
-    bio: ""
->>>>>>> a5e1d4044a48b135674441607b7a1f65c4bc5ab7
+    bio: "",
+    userId: "",
+    loggedIn: false,
+    loading: true
   };
 
   render() {
@@ -41,29 +38,20 @@ class MyProvider extends Component {
             };
 
             fetch("api/users/register", {
-<<<<<<< HEAD
-            method: "POST",
-            body: JSON.stringify(newUser),
-            headers: {
-            "Content-Type": "application/json"
-            },
-             mode: "cors"
-           })
-            .then(data => data.json())
-            .then(user => {
-              console.log(user);
-              this.setState({ loggedIn: true});
-=======
               method: "POST",
               body: JSON.stringify(newUser),
               headers: {
                 "Content-Type": "application/json"
               },
               mode: "cors"
->>>>>>> a5e1d4044a48b135674441607b7a1f65c4bc5ab7
             })
               .then(data => data.json())
               .then(user => {
+                this.setState({
+                  loggedIn: true,
+                  loading: false,
+                  userId: user._id
+                });
                 console.log(user);
               })
               .catch(err => console.log(err));
@@ -77,40 +65,35 @@ class MyProvider extends Component {
             };
 
             fetch("api/users/login", {
-<<<<<<< HEAD
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-            "Content-Type": "application/json"
-            },
-             mode: "cors"
-           })
-            .then(data => data.json())
-            .then(user => {
-              if(user.token) {
-                fetch('api/users/current',{
-                  headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": user.token
-                  },
-                  mode: "cors"
-                })
-                .then(res => res.json())
-                .then(data => {
-                  console.log(data);
-                  this.setState({ loggedIn: true})
-                });
-              }
-              console.log(user)
-=======
               method: "POST",
               body: JSON.stringify(user),
               headers: {
                 "Content-Type": "application/json"
               },
               mode: "cors"
->>>>>>> a5e1d4044a48b135674441607b7a1f65c4bc5ab7
             })
+              .then(data => data.json())
+              .then(user => {
+                if (user.token) {
+                  fetch("api/users/current", {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: user.token
+                    },
+                    mode: "cors"
+                  })
+                    .then(res => res.json())
+                    .then(data => {
+                      console.log(data);
+                      this.setState({
+                        loggedIn: true,
+                        loading: false,
+                        userId: user._id
+                      });
+                    });
+                }
+                console.log(user);
+              })
               .then(data => data.json())
               .then(user => {
                 console.log(user);

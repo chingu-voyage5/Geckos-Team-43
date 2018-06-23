@@ -184,3 +184,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
 }
+.addBio {
+  width: 50%;
+  align-self: center;
+}
