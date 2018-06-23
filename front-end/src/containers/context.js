@@ -9,7 +9,8 @@ class MyProvider extends Component {
     email: "",
     password: "",
     password2:"",
-    bio: ""
+    bio: "",
+    loggedIn: false
   };
 
   render() {
@@ -22,7 +23,6 @@ class MyProvider extends Component {
             const target = e.target;
             const value = target.value;
             const name = target.name;
-            const bio = target.bio;
 
             this.setState({ [name]: value });
           },
@@ -46,6 +46,7 @@ class MyProvider extends Component {
             .then(data => data.json())
             .then(user => {
               console.log(user);
+              this.setState({ loggedIn: true});
             })
             .catch(err => console.log(err));
             
@@ -67,16 +68,21 @@ class MyProvider extends Component {
            })
             .then(data => data.json())
             .then(user => {
+              if(user.token) {
+                fetch('api/users/current',{
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": user.token
+                  },
+                  mode: "cors"
+                })
+                .then(res => res.json())
+                .then(data => {
+                  console.log(data);
+                  this.setState({ loggedIn: true})
+                });
+              }
               console.log(user)
-              fetch('api/users/current',{
-                headers: {
-                  "Content-Type": "application/json",
-                  "Authorization": user.token
-                },
-                mode: "cors"
-              })
-              .then(res => res.json())
-              .then(data => console.log(data));
             })
             .catch(err => console.log(err));
             
