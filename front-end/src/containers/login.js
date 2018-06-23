@@ -29,7 +29,7 @@ const Login = () => (
           />
           <input type="submit" className="btn" value="Login" />
         </form>
-        {user.fireRedirect && <Redirect to={"/user/12345"} />}
+        {user.state.loggedIn ? <Redirect to="/account"/> : null}
       </div>
     )}
   </MyContext.Consumer>
