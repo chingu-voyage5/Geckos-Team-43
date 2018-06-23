@@ -1,6 +1,5 @@
 import React from "react";
 import { MyContext } from "../containers/context.js";
-import Header from "./Header";
 import { Button } from "react-materialize";
 import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
