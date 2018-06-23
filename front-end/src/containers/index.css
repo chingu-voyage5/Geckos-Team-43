@@ -16,6 +16,9 @@ header h1 {
 header .logo {
   width: 100%;
 }
+.Navlinks {
+  display: none;
+}
 .navbar {
   grid-column: 14 / span 4;
   display: grid;
