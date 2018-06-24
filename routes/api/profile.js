@@ -1,37 +1,37 @@
 //this will deal with user info like profile, status, etc
 
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const mongoose = require("mongoose");
-const passport = require("passport");
+const mongoose = require('mongoose');
+const passport = require('passport');
 
 //load validation
-const validateProfileInput = require("../../validation/profile");
+const validateProfileInput = require('../../validation/profile');
 
 //load profile model
-const Profile = require("../../models/Profile");
-const User = require("../../models/User");
+const Profile = require('../../models/Profile');
+const User = require('../../models/User');
 
 //below refers to /api/profile/test
 //@route  GET api/profile/test
 //@desc   Tests profile route
 //@access Public
-router.get("/test", (req, res) => res.json({ msg: "Profile works" }));
+router.get('/test', (req, res) => res.json({ msg: 'Profile works' }));
 
 //@route  GET api/profile
 //@desc   Get current users profile
 //@access Private
 
 router.get(
-  "/",
-  passport.authenticate("jwt", { session: false }),
+  '/',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const errors = {};
     Profile.findOne({ user: req.user.id })
-      .populate("user", ["name", "avatar"])
+      .populate('user', ['name', 'avatar'])
       .then(profile => {
         if (!profile) {
-          errors.noprofile = "theres no profile for this user";
+          errors.noprofile = 'theres no profile for this user';
           return res.status(404).json(errors);
         }
         res.json(profile);
@@ -45,8 +45,8 @@ router.get(
 //@access Private
 
 router.post(
-  "/",
-  passport.authenticate("jwt", { session: false }),
+  '/',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
 
@@ -66,8 +66,11 @@ router.post(
     if (req.body.githubusername)
       profileFields.githubusername = req.body.githubusername;
     //skills, split into an array
-    if (typeof req.body.skills !== "undefined") {
-      profileFields.skills = req.body.skills.split(",");
+    if (typeof req.body.skills !== 'undefined') {
+      profileFields.skills = req.body.skills.split(',');
+    }
+    if (typeof req.body.interests !== 'undefined') {
+      profileFields.interests = req.body.interests.split(',');
     }
 
     Profile.findOne({ user: req.user.id }).then(profile => {
@@ -84,7 +87,7 @@ router.post(
         //check if handle exists
         Profile.findOne({ handle: profileFields.handle }).then(profile => {
           if (profile) {
-            errors.handle = "that profile already exists";
+            errors.handle = 'that profile already exists';
             return res.send(400).json(errors);
           }
 
@@ -94,6 +97,22 @@ router.post(
           });
         });
       }
+    });
+  }
+);
+
+//@route  DELETE api/profile
+//@desc   Delete user and profile
+//@access Private
+
+router.delete(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+        res.json({ success: true })
+      );
     });
   }
 );
