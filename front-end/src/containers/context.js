@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import userProfile from "../images/User.jpeg";
 import { Redirect } from "react-router";
 
-// creates the global container tthat can be accesed by any component
 const MyContext = React.createContext();
 
 class MyProvider extends Component {
@@ -91,8 +90,9 @@ class MyProvider extends Component {
                       this.setState({
                         loggedIn: true,
                         loading: false,
-                        userId: user._id,
-                        userProfile: `http:${user.avatar}`
+                        name: data.name,
+                        userId: data.id,
+                        userProfile: `http:${data.avatar}`
                       });
                     });
                 }
@@ -115,9 +115,9 @@ class MyProvider extends Component {
           },
           addBio: e => {
             e.preventDefault();
-            this.setState({ bio: this.state.bio });
+            <Redirect to="/account" />;
           },
-          logout: e => {
+          logout() {
             console.log("Loggin out");
             <Redirect to="/login" />;
             this.setState({ loggedIn: false });

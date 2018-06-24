@@ -72,7 +72,7 @@ nav a:hover {
 }
 .wrapper {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 960px;
 }
 
 .signup-box {
@@ -133,14 +133,40 @@ nav a:hover {
   margin: 15px 0 0 0;
 }
 
-.user-profile {
+.user-profile,
+.popular-events .title {
   display: grid;
-  grid-gap: 25px;
+  grid-template-columns: repeat(8, 1fr);
   width: 100vw;
   justify-content: center;
-  grid-template-columns: repeat(8, 1fr);
 }
-
+.user-profile {
+  grid-gap: 25px;
+}
+.popular-events .title {
+  grid-gap: 10px;
+  align-items: center;
+}
+.popular-events .title h1,
+.popular-events .title h2,
+.popular-events .title h3,
+.popular-events .title h4,
+.popular-events .title h5,
+.popular-events .title h6 {
+  font-weight: bold;
+}
+.popular-events .title h1 {
+  font-size: 1.5em;
+  grid-column: span 5;
+}
+.popular-events .title h5 {
+  font-size: 1em;
+  grid-column: -1;
+}
+.popular-events .title h3 {
+  font-size: 1.5em;
+  grid-column: span 5;
+}
 .nav-user {
   display: flex;
   flex-direction: row;
@@ -187,4 +213,54 @@ nav a:hover {
 .addBio {
   width: 50%;
   align-self: center;
+}
+/*Events*/
+.event-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+.event-card img {
+  width: 100%;
+}
+.category-card img {
+  width: 80%;
+}
+.event-cards > .card,
+.category-cards > .card {
+  padding: 10px;
+}
+.category-cards > .card {
+  box-shadow: none;
+}
+.event-date {
+  width: 20%;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: -60px;
+  margin-left: 10px;
+}
+.event-date > .date {
+  display: block;
+  color: #ff5b5c;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  grid-gap: 20px;
+}
+
+/*Footer*/
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.footer h6 {
+  margin: 0;
+  margin-left: 10px;
 }
