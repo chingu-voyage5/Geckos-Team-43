@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import userProfile from "../images/User.jpeg";
 import { Redirect } from "react-router";
+import history from "../components/History";
 
 const MyContext = React.createContext();
 
@@ -113,9 +114,8 @@ class MyProvider extends Component {
               })
               .catch(err => console.log(err));
           },
-          addBio: e => {
-            e.preventDefault();
-            <Redirect to="/account" />;
+          addBio() {
+            history.push("/edit");
           },
           logout() {
             console.log("Loggin out");

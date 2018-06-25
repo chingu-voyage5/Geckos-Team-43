@@ -6,10 +6,10 @@ import "../containers/index.css";
 
 const UserProfile = () => (
   <MyContext.Consumer>
-    {user => (
+    {({ addBio, state }) => (
       <div className="user-profile wrapper">
         <div className="user-info">
-          <h1>{user.state.name}</h1>
+          <h1>{state.name}</h1>
           <p>
             <b>Location:</b>
             <br />New York City
@@ -17,7 +17,7 @@ const UserProfile = () => (
           <p>
             <b>Email:</b>
             <br />
-            {user.state.email}
+            {state.email}
           </p>
           <p>
             <b>Leetup member since:</b>
@@ -35,8 +35,8 @@ const UserProfile = () => (
           </p>
         </div>
         <div className="user-bio">
-          <p>{user.state.bio ? user.state.bio : ""}</p>
-          <Button className="addBio" waves="light" onClick={user.addBio}>
+          <p>{state.bio ? state.bio : ""}</p>
+          <Button className="addBio" waves="light" onClick={addBio}>
             Add Bio
           </Button>
         </div>

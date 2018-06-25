@@ -8,7 +8,7 @@ class Header extends Component {
   render() {
     return (
       <MyContext.Consumer>
-        {({ logout, value }) => (
+        {({ logout, state }) => (
           <header>
             <Link to={"/"} className="brand">
               <img src={logo} className="logo" alt="logo" />
