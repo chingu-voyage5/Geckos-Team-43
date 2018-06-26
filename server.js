@@ -1,11 +1,12 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const users = require("./routes/api/users");
-const profile = require("./routes/api/profile");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const logger = require("morgan");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const events = require('./routes/api/events');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const logger = require('morgan');
+const cors = require('cors');
 const app = express();
 
 //setup middleware to get req.body
@@ -16,24 +17,25 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //log activity in console with morgan
-app.use(logger("dev"));
+app.use(logger('dev'));
 
 //db config
 const db = process.env.mongoURI;
 mongoose
   .connect(db)
-  .then(() => console.log("Connected to Mongo"))
+  .then(() => console.log('Connected to Mongo'))
   .catch(err => console.log(err));
 
 //init and configure passport
 app.use(passport.initialize());
-require("./config/passport")(passport);
+require('./config/passport')(passport);
 
 // app.use("/api/users", users);
 
 // use routes
-app.use("/api/users", users);
-app.use("/api/profile", profile);
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/events', events);
 
 const port = process.env.PORT || 10000;
 
