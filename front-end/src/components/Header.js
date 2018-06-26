@@ -8,14 +8,14 @@ class Header extends Component {
   render() {
     return (
       <MyContext.Consumer>
-        {user => (
+        {({ logout, state }) => (
           <header>
             <Link to={"/"} className="brand">
               <img src={logo} className="logo" alt="logo" />
               <h1>{this.props.title}</h1>
             </Link>
             <nav className="navbar">
-              <Link to={"/login"} logout={user.logout}>
+              <Link to={"/login"} onClick={logout}>
                 {this.props.login}
               </Link>
               <img
