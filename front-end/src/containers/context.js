@@ -114,11 +114,10 @@ class MyProvider extends Component {
               })
               .catch(err => console.log(err));
           },
-          addBio() {
-            history.push("/edit");
+          addBio: () => {
+            <Redirect to="/edit" />;
           },
-          logout() {
-            console.log("Loggin out");
+          logout: () => {
             <Redirect to="/login" />;
             this.setState({ loggedIn: false });
           }
