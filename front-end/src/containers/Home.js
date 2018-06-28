@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Popular from "../components/Popular";
+import UserInfoBanner from "../components/UserInfoBanner";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -27,6 +28,7 @@ export default function Home() {
         signup="Sign Up"
       />
       <Popular />
+      <UserInfoBanner />
       <Footer title="Leet Up" />
     </div>
   );
