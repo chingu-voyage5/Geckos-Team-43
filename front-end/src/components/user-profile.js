@@ -3,6 +3,7 @@ import { MyContext } from "../containers/context.js";
 import { Button } from "react-materialize";
 import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
+import Loading from "./Loading";
 
 const UserProfile = () => (
   <MyContext.Consumer>
@@ -37,6 +38,7 @@ const UserProfile = () => (
         <div className="user-bio">
           <p>{state.bio ? state.bio : ""}</p>
           <Button className="addBio" waves="light" onClick={addBio}>
+            {state.loading === true ? <Loading /> : ""}
             Add Bio
           </Button>
         </div>

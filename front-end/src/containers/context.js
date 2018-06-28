@@ -62,6 +62,9 @@ class MyProvider extends Component {
           },
           handleLogin: e => {
             e.preventDefault();
+            this.setState({
+              loading: true
+            });
             const user = {
               email: this.state.email,
               password: this.state.password
