@@ -251,7 +251,33 @@ nav a:hover {
   grid-template-columns: repeat(4, minmax(120px, 1fr));
   grid-gap: 20px;
 }
-
+.user-guide {
+  text-align: center;
+  background: #0f1722;
+  padding: 60px;
+  color: #fff;
+}
+.user-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
+}
+.title-card {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  align-items: start;
+  grid-gap: 10px;
+}
+.title-card > img {
+  width: 100%;
+}
+.title-card > div {
+  text-align: left;
+}
+#step-title {
+  margin-top: 0;
+  font-weight: bolder;
+}
 /*Footer*/
 .footer {
   display: flex;

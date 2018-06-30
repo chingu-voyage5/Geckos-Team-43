@@ -33,11 +33,11 @@ class Account extends Component {
       <div>
         <Header
           title="Leet Up"
-          login={this.state.status === true ? "Log Out" : "Look In"}
+          login={this.state.status === true ? "Log Out" : "Log In"}
           userProfile={this.state.userProfile}
         />
-        <UserProfile profileImage={this.state.userProfile} />
         <p>Under Construction</p>
+        <UserProfile profileImage={this.state.userProfile} />
       </div>
     );
   }
