@@ -28,7 +28,7 @@ const UserInfoBanner = () => (
       <div className="user-guide">
         <div className="wrapper">
           <h3>How LeetUp Works</h3>
-          <div className="user-info">
+          <div className="user-manual">
             <Steps />
             <Steps />
           </div>
