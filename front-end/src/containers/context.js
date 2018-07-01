@@ -119,6 +119,7 @@ class MyProvider extends Component {
           },
           updateAccount: () => {
             history.push("/edit");
+            this.setState({ loading: false });
           },
           logout: () => {
             <Redirect to="/login" />;

@@ -27,7 +27,7 @@ class App extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/account/" component={Account}>
+                <Link to="/edit/" component={Account}>
                   Account
                 </Link>
               </li>
@@ -44,7 +44,7 @@ class App extends Component {
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/user/:userId" component={UserProfile} />
-            <Route path="/user/:userId#/edit" component={Account} />
+            <Route path="/user/:userId/edit" component={Account} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
           </div>
