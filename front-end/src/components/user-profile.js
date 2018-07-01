@@ -42,6 +42,11 @@ const UserProfile = () => (
             Update Account
           </Button>
         </div>
+        {
+          state.redirect ? 
+          <Redirect to="/edit" /> :
+          null
+        }
       </div>
     )}
   </MyContext.Consumer>

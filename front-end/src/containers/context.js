@@ -15,7 +15,8 @@ class MyProvider extends Component {
     userId: "",
     loggedIn: false,
     loading: true,
-    userProfile: userProfile
+    userProfile: userProfile,
+    redirect: false
   };
 
   render() {
@@ -90,7 +91,6 @@ class MyProvider extends Component {
                   })
                     .then(res => res.json())
                     .then(data => {
-                      console.log(data);
                       this.setState({
                         loggedIn: true,
                         loading: false,
@@ -118,8 +118,9 @@ class MyProvider extends Component {
               .catch(err => console.log(err));
           },
           updateAccount: () => {
-            history.push("/edit");
-            this.setState({ loading: false });
+            this.setState({ redirect: true });
+            //history.push("/edit");
+            
           },
           logout: () => {
             <Redirect to="/login" />;

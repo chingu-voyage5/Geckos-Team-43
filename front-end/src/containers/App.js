@@ -44,7 +44,7 @@ class App extends Component {
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/user/:userId" component={UserProfile} />
-            <Route path="/user/:userId/edit" component={Account} />
+            <Route path="/edit" component={Account} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
           </div>
