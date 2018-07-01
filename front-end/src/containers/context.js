@@ -117,8 +117,9 @@ class MyProvider extends Component {
               })
               .catch(err => console.log(err));
           },
-          addBio: () => {
-            <Redirect to="/edit" />;
+          updateAccount: () => {
+            history.push("/edit");
+            this.setState({ loading: false });
           },
           logout: () => {
             <Redirect to="/login" />;

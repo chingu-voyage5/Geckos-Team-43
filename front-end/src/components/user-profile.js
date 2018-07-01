@@ -4,10 +4,11 @@ import { Button } from "react-materialize";
 import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
 import Loading from "./Loading";
+import { Redirect } from "react-router";
 
 const UserProfile = () => (
   <MyContext.Consumer>
-    {({ addBio, state }) => (
+    {({ updateAccount, state }) => (
       <div className="user-profile wrapper">
         <div className="user-info">
           <h1>{state.name}</h1>
@@ -37,9 +38,8 @@ const UserProfile = () => (
         </div>
         <div className="user-bio">
           <p>{state.bio ? state.bio : ""}</p>
-          <Button className="addBio" waves="light" onClick={addBio}>
-            {state.loading === true ? <Loading /> : ""}
-            Add Bio
+          <Button className="addBio" waves="light" onClick={updateAccount}>
+            Update Account
           </Button>
         </div>
       </div>

@@ -27,7 +27,7 @@ class App extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/account/" component={Account}>
+                <Link to="/edit/" component={Account}>
                   Account
                 </Link>
               </li>

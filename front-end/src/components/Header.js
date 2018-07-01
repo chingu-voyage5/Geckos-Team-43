@@ -14,17 +14,23 @@ class Header extends Component {
               <img src={logo} className="logo" alt="logo" />
               <h1>{this.props.title}</h1>
             </Link>
-            <nav className="navbar">
-              <Link to={"/login"} onClick={logout}>
-                {this.props.login}
-              </Link>
-              <img
-                alt=""
-                src={this.props.userProfile}
-                className="profile-photo"
-              />
-              <Link to={"/signup"}>{this.props.signup}</Link>
-            </nav>
+            {state.loggedIn ? (
+              <nav className="navbar">
+                <Link to={"/login"} onClick={logout}>
+                  {this.props.login}
+                </Link>
+                <img
+                  alt=""
+                  src={this.props.userProfile}
+                  className="profile-photo"
+                />
+              </nav>
+            ) : (
+              <nav className="navbar">
+                <Link to={"/login"}>{this.props.login}</Link>
+                <Link to={"/signup"}>{this.props.signup}</Link>
+              </nav>
+            )}
           </header>
         )}
       </MyContext.Consumer>

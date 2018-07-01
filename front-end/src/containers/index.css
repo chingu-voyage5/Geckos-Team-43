@@ -257,7 +257,7 @@ nav a:hover {
   padding: 60px;
   color: #fff;
 }
-.user-info {
+.user-manual {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-flow: column;
