@@ -290,3 +290,20 @@ nav a:hover {
   margin: 0;
   margin-left: 10px;
 }
+.info {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
+}
+.info > .team {
+  grid-column: 2 / span 2;
+}
+.info > .terms {
+  grid-column: 1 / span 5;
+}
+.info > .terms li {
+  margin-left: 10px;
+  margin-right: 10px;
+}
