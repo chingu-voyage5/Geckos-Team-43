@@ -8,6 +8,11 @@ import Login from "../containers/login";
 import UserProfile from "../containers/Profile";
 import Account from "../containers/Account";
 import { MyProvider } from "../containers/context.js"; //All consumers point to the nearest provider
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCheckSquare);
 
 class App extends Component {
   render() {

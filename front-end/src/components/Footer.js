@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
 import { MyContext } from "../containers/context.js"; //importing the context
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const year = new Date().getFullYear();
 
@@ -60,27 +61,27 @@ class Footer extends Component {
                 <ul className="social">
                   <li>
                     <Link to={"/"}>
-                      <i class="material-icons">face</i>
+                      <FontAwesomeIcon icon="check-square" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="material-icons">face</i>
+                      <FontAwesomeIcon icon="check-square" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="material-icons">face</i>
+                      <FontAwesomeIcon icon="check-square" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="material-icons">face</i>
+                      <FontAwesomeIcon icon="check-square" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="material-icons">face</i>
+                      <FontAwesomeIcon icon="check-square" />
                     </Link>
                   </li>
                 </ul>
