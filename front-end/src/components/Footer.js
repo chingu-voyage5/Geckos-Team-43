@@ -12,6 +12,80 @@ class Footer extends Component {
       <MyContext.Consumer>
         {user => (
           <footer className="footer">
+            <div className="useful-links">
+              <div>
+                <h6>Your Account</h6>
+                <ul className="account">
+                  <li>
+                    <Link to={"/"}>Sign Up</Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>Log In</Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>Help</Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h6>Discover</h6>
+                <ul className="discover">
+                  <li>
+                    <Link to={"/"}>Groups</Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>Calendar</Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>Topics</Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>Cities</Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h6>LeetUp</h6>
+                <ul className="leetup">
+                  <li>
+                    <Link to={"/"}>About Us</Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>Contact Us</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="social-links">
+                <h6>Follow Us</h6>
+                <ul className="social">
+                  <li>
+                    <Link to={"/"}>
+                      <i class="material-icons">face</i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>
+                      <i class="material-icons">face</i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>
+                      <i class="material-icons">face</i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>
+                      <i class="material-icons">face</i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/"}>
+                      <i class="material-icons">face</i>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div className="info">
               <p>
                 &copy; {this.props.title} {year}

@@ -280,30 +280,63 @@ nav a:hover {
 }
 /*Footer*/
 .footer {
-  display: flex;
+  background: #363e48;
+  display: grid;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #999;
+}
+.footer .info a,
+.footer .useful-links a {
+  color: #999;
 }
 .footer h6 {
+  color: #fff;
   margin: 0;
-  margin-left: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 .info {
+  font-size: 0.9em;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-gap: 10px;
   align-items: center;
   justify-items: center;
+}
+.info > p {
+  margin-bottom: 0;
 }
 .info > .team {
   grid-column: 2 / span 2;
 }
 .info > .terms {
-  grid-column: 1 / span 5;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-self: start;
+}
+.info > .terms {
+  margin-top: 0;
 }
 .info > .terms li {
   margin-left: 10px;
   margin-right: 10px;
+}
+.info > .terms li:first-of-type {
+  margin-left: 0;
+}
+.useful-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-gap: 1em;
+  margin-bottom: 30px;
+}
+.useful-links li {
+  margin-bottom: 15px;
+}
+.social-links .social {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
