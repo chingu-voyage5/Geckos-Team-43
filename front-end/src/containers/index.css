@@ -214,6 +214,9 @@ nav a:hover {
   width: 50%;
   align-self: center;
 }
+.photo {
+  margin-top: 60px;
+}
 /*Events*/
 .event-cards {
   display: grid;
