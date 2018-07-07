@@ -343,3 +343,11 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
+.danger {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.danger hr {
+  margin-bottom: 50px;
+  border: 1px solid #ed6762;
+}
