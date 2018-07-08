@@ -345,3 +345,7 @@ nav a:hover {
   margin-top: 40px;
   margin-bottom: 80px;
 }
+.upcoming-event-card {
+  display: grid;
+  grid-template-columns: 2fr 8fr 4fr;
+}

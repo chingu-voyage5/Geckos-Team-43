@@ -5,7 +5,8 @@ import logo from "../images/LeetUplogo.png";
 import "./index.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import EventCard from "../components/EventCard";
+import EventBanner from "../components/EventBanner";
+import UpcomingEvent from "../components/UpcomingEvent";
 
 const EventPage = () => (
   <MyContext.Consumer>
@@ -14,15 +15,11 @@ const EventPage = () => (
         <Header title="Leet Up" login="Login" signup="Sign Up" />
         <div className="event-profile wrapper">
           <div className="event-details">
-            <h1>Event Title</h1>
-            <EventCard />
-            <h6>Event Location</h6>
-            <h6>Number of Attendees</h6>
-          </div>
-          <div className="rsvp">
-            <p>56 going</p>
-            <button className="btn">Going</button>
-            <button className="btn">Not interested</button>
+            <EventBanner />
+            <React.Fragment>
+              <h5>Next Event</h5>
+              <UpcomingEvent />
+            </React.Fragment>
           </div>
           <div className="event-info">
             <h2>What we're about</h2>
