@@ -55,7 +55,7 @@ class App extends Component {
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/user/:userId" component={UserProfile} />
-            <Route path="/:eventId" component={EventPage} />
+            <Route path="/event/:eventId" component={EventPage} />
             <Route path="/edit" component={Account} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />

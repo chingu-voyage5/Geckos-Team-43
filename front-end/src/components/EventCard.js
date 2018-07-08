@@ -24,7 +24,7 @@ const EventDetails = () => (
       <div className="event-details">
         <p>Monday, June 25, 6:30pm</p>
         <p>
-          <Link to={"/my-book-club-123"}>My Book Club</Link>
+          <Link to={"/event/my-book-club-123"}>My Book Club</Link>
         </p>
       </div>
     )}
@@ -38,7 +38,7 @@ const EventImage = () => (
         <p className="card event-date">
           <span className="date">25</span>JUN
         </p>
-        <Link to={"/my-book-club-123"} className="brand">
+        <Link to={"/event/my-book-club-123"} className="brand">
           <img src={logo} className="logo" alt="logo" />
         </Link>
       </div>
