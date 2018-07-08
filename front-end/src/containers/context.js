@@ -69,7 +69,9 @@ class MyProvider extends Component {
             });
             const user = {
               email: this.state.email,
-              password: this.state.password
+              password: this.state.password,
+              userProfile: this.state.userProfile,
+              location: this.state.location
             };
 
             fetch("api/users/login", {
