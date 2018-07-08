@@ -7,6 +7,7 @@ import Signup from "../containers/sign-up";
 import Login from "../containers/login";
 import UserProfile from "../containers/Profile";
 import Account from "../containers/Account";
+import EventPage from "../containers/EventPage";
 import { MyProvider } from "../containers/context.js"; //All consumers point to the nearest provider
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,6 +38,11 @@ class App extends Component {
                 </Link>
               </li>
               <li>
+                <Link to="/event/" component={EventPage}>
+                  Event
+                </Link>
+              </li>
+              <li>
                 <Link to="/signup" component={Signup}>
                   Signup
                 </Link>
@@ -49,6 +55,7 @@ class App extends Component {
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/user/:userId" component={UserProfile} />
+            <Route path="/event/:eventId" component={EventPage} />
             <Route path="/edit" component={Account} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />

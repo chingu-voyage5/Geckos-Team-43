@@ -9,9 +9,13 @@ const HostDetails = () => (
   <MyContext.Consumer>
     {user => (
       <div className="host-details">
+        <Link to={"/my-book-club-123"} className="brand">
+          <img src={logo} className="logo" alt="logo" />
+        </Link>
+        <Button>Attend</Button>
         <p>Posted on: Monday, June 25</p>
         <p>
-          Hosted by <Link to={"/"}>John Smith</Link>
+          Venue<Link to={"/"}>ABC 123 Street</Link>
         </p>
       </div>
     )}
@@ -23,9 +27,19 @@ const EventDetails = () => (
     {user => (
       <div className="event-details">
         <p>Monday, June 25, 6:30pm</p>
+        <h4>
+          <Link to={"/my-book-club-123"}>My Book Club</Link>
+        </h4>
         <p>
-          <Link to={"/event/my-book-club-123"}>My Book Club</Link>
+          Hosted by <Link to={"/"}>John Smith</Link>
         </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
+          distinctio nulla eos cupiditate at laboriosam facere quaerat, quasi
+          non et cumque totam expedita! Ex maiores, sequi obcaecati odit enim
+          dolorum?
+        </p>
+        <p>Attendees</p>
       </div>
     )}
   </MyContext.Consumer>
@@ -38,18 +52,15 @@ const EventImage = () => (
         <p className="card event-date">
           <span className="date">25</span>JUN
         </p>
-        <Link to={"/event/my-book-club-123"} className="brand">
-          <img src={logo} className="logo" alt="logo" />
-        </Link>
       </div>
     )}
   </MyContext.Consumer>
 );
 
-const EventCard = () => (
+const UpcomingEvent = () => (
   <MyContext.Consumer>
     {user => (
-      <div className="event-card card">
+      <div className="upcoming-event-card card">
         <EventImage />
         <EventDetails />
         <HostDetails />
@@ -58,4 +69,4 @@ const EventCard = () => (
   </MyContext.Consumer>
 );
 
-export default EventCard;
+export default UpcomingEvent;
