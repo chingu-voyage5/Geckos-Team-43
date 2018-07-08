@@ -214,6 +214,9 @@ nav a:hover {
   width: 50%;
   align-self: center;
 }
+.photo {
+  margin-top: 60px;
+}
 /*Events*/
 .event-cards {
   display: grid;
@@ -348,4 +351,12 @@ nav a:hover {
 .upcoming-event-card {
   display: grid;
   grid-template-columns: 2fr 8fr 4fr;
+}
+.danger {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.danger hr {
+  margin-bottom: 50px;
+  border: 1px solid #ed6762;
 }

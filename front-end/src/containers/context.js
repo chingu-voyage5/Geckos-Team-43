@@ -13,6 +13,7 @@ class MyProvider extends Component {
     password2: "",
     bio: "",
     userId: "",
+    location: "",
     loggedIn: false,
     loading: true,
     userProfile: userProfile,
@@ -120,7 +121,6 @@ class MyProvider extends Component {
           updateAccount: () => {
             this.setState({ redirect: true });
             //history.push("/edit");
-            
           },
           logout: () => {
             <Redirect to="/login" />;
