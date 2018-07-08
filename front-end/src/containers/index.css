@@ -340,3 +340,8 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
+/*Event Page*/
+.event-profile {
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
