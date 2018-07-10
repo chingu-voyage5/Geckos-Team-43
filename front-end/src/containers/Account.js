@@ -15,7 +15,7 @@ import {
 
 const Account = () => (
   <MyContext.Consumer>
-    {(user) => (
+    {user => (
       <div className="wrapper">
         <Breadcrumb>
           <MenuItem>
@@ -70,11 +70,13 @@ const Account = () => (
                 defaultValue="April 1 2018"
                 disabled
               />
-              <Input s={8}
-              label="Interests"
-              onChange={user.handleChange}
-              name="interests"
-              type="textarea" />
+              <Input
+                s={8}
+                label="Interests"
+                onChange={user.handleChange}
+                name="interests"
+                type="textarea"
+              />
               <Input
                 s={8}
                 label="Bio"
@@ -83,16 +85,19 @@ const Account = () => (
                 defaultValue={user.state.bio}
                 type="textarea"
               />
-              <Input s={12}
-              label="Photo"
-              name="photo"
-              type="file"
-              className="photo" />
               <Input
-              type="submit"
-              name="email"
-              value="Submit"
-              className="blue btn" />
+                s={12}
+                label="Photo"
+                name="photo"
+                type="file"
+                className="photo"
+              />
+              <Input
+                type="submit"
+                name="email"
+                defaultValue="Submit"
+                className="blue btn"
+              />
             </Row>
           </form>
           <div className="danger">

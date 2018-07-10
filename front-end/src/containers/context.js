@@ -111,27 +111,36 @@ class MyProvider extends Component {
             this.setState({ redirect: true });
             //history.push("/edit");
           },
-          handleUpdate: (e) => {
+          handleUpdate: e => {
             e.preventDefault();
+            const user = {
+              email: this.state.email,
+              password: this.state.password,
+              userProfile: this.state.userProfile,
+              bio: this.state.bio
+            };
             const update = {
               handle: "some handle"
-            }
-            if(this.state.bio !== '') update.bio = this.state.bio;
-            if(this.state.interests !== '') update.interests = this.state.interests;
+            };
+            if (this.state.bio !== "") update.bio = this.state.bio;
+            if (this.state.interests !== "")
+              update.interests = this.state.interests;
             fetch("api/profile", {
-              method: "POST",
-              body: JSON.stringify(update),
+              method: "GET",
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzIzMmUxMjM2YzliNTgwZGE3NjUxYiIsIm5hbWUiOiJ0ZXN0IiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9mMmM5N2IxZjJkMjg5OGNkMmQ2NDY2Y2U5NWQ0YmEzMz9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE1MzEyMzE5NTgsImV4cCI6MTUzMTIzNTU1OH0.A1eHO6j7iRM1llCxMC2QOevTeyFdGMTuSStPMVZFs4E"
+                Authorization:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzEwNTcxZjY4NGY1NzAyNThmYTQ1YyIsIm5hbWUiOiJNaWNoYWVsIFNjb3R0IiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9lMzA1NjEzYmI0ZWI3NTdlMjU2ODk2M2MzMGYxOTllZT9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE1MzEyMzg0NjYsImV4cCI6MTUzMTI0MjA2Nn0.nWQrabzH2cZyu8TqVuYAUzfW1ig5DOdzXiJSYPbA4gw"
               },
               mode: "cors"
             })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
-            this.setState({ redirect: true });
+              .then(res => res.json())
+              .then(data => console.log(data))
+              .catch(err => console.log(err));
+            this.setState({
+              redirect: true
+            });
           },
           logout: () => {
             <Redirect to="/login" />;

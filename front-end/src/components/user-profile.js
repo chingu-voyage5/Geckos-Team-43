@@ -14,7 +14,8 @@ const UserProfile = () => (
           <h1>{state.name}</h1>
           <p>
             <b>Location:</b>
-            <br />New York City
+            <br />
+            {state.location}
           </p>
           <p>
             <b>Email:</b>
@@ -31,10 +32,7 @@ const UserProfile = () => (
         </div>
         <div className="interests">
           <h3>Interests</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam,
-            consectetur magnam, animi harum ut eveniet!
-          </p>
+          <p>{state.interests}</p>
         </div>
         <div className="user-bio">
           <p>{state.bio ? state.bio : ""}</p>
@@ -42,11 +40,7 @@ const UserProfile = () => (
             Update Account
           </Button>
         </div>
-        {
-          state.redirect ? 
-          <Redirect to="/edit" /> :
-          null
-        }
+        {state.redirect ? <Redirect to="/edit" /> : null}
       </div>
     )}
   </MyContext.Consumer>
