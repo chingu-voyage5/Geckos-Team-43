@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "../images/logo.svg";
 import "../containers/index.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import Home from "../containers/Home";
@@ -10,7 +9,6 @@ import Account from "../containers/Account";
 import EventPage from "../containers/EventPage";
 import { MyProvider } from "../containers/context.js"; //All consumers point to the nearest provider
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faCheckSquare);
