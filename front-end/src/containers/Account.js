@@ -15,56 +15,86 @@ import {
 
 const Account = () => (
   <MyContext.Consumer>
-    {({ state }) => (
+    {(user) => (
       <div className="wrapper">
         <Breadcrumb>
           <MenuItem>
-            <Link to={`/user/${state.userId}`}>Back to Profile</Link>
+            <Link to={`/user/${user.state.userId}`}>Back to Profile</Link>
           </MenuItem>
         </Breadcrumb>
         <div className="">
           <h5>Account Settings</h5>
-          <Row>
-            <Input
-              s={8}
-              label="Full Name"
-              validate
-              placholder="Your Full Name"
-              defaultValue={state.name}
-            />
-            <Input
-              s={8}
-              label="Email"
-              validate
-              placholder="Your Email"
-              defaultValue={state.email}
-            />
-            <Input
-              s={8}
-              label="Location"
-              validate
-              placholder="Your Location"
-              defaultValue={state.location}
-            />
-            <Input
-              type="password"
-              s={8}
-              label="Password"
-              validate
-              placholder="Your Password"
-              defaultValue={state.password}
-            />
-            <Input
-              s={8}
-              label="Member Since"
-              defaultValue="April 1 2018"
-              disabled
-            />
-            <Input s={8} label="Interests" type="textarea" />
-            <Input s={8} label="Bio" defaultValue={state.bio} type="textarea" />
-            <Input s={12} label="Photo" type="file" className="photo" />
-            <Input type="submit" value="Submit" className="blue btn" />
-          </Row>
+          <form onSubmit={user.handleUpdate}>
+            <Row>
+              <Input
+                s={8}
+                label="Full Name"
+                onChange={user.handleChange}
+                name="name"
+                validate
+                placholder="Your Full Name"
+                defaultValue={user.state.name}
+              />
+              <Input
+                s={8}
+                label="Email"
+                onChange={user.handleChange}
+                name="email"
+                validate
+                placholder="Your Email"
+                defaultValue={user.state.email}
+              />
+              <Input
+                s={8}
+                label="Location"
+                onChange={user.handleChange}
+                name="location"
+                validate
+                placholder="Your Location"
+                defaultValue={user.state.location}
+              />
+              <Input
+                type="password"
+                s={8}
+                label="Password"
+                onChange={user.handleChange}
+                name="password"
+                validate
+                placholder="Your Password"
+                defaultValue={user.state.password}
+              />
+              <Input
+                s={8}
+                label="Member Since"
+                onChange={user.handleChange}
+                defaultValue="April 1 2018"
+                disabled
+              />
+              <Input s={8}
+              label="Interests"
+              onChange={user.handleChange}
+              name="interests"
+              type="textarea" />
+              <Input
+                s={8}
+                label="Bio"
+                onChange={user.handleChange}
+                name="bio"
+                defaultValue={user.state.bio}
+                type="textarea"
+              />
+              <Input s={12}
+              label="Photo"
+              name="photo"
+              type="file"
+              className="photo" />
+              <Input
+              type="submit"
+              name="email"
+              value="Submit"
+              className="blue btn" />
+            </Row>
+          </form>
           <div className="danger">
             <hr />
             <h6>Only proceed if you would like to close your account</h6>
