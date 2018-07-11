@@ -126,21 +126,20 @@ class MyProvider extends Component {
             if (this.state.interests !== "")
               update.interests = this.state.interests;
             fetch("api/profile", {
-              method: "GET",
+              method: "POST",
+              body: JSON.stringify(update),
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
                 Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzEwNTcxZjY4NGY1NzAyNThmYTQ1YyIsIm5hbWUiOiJNaWNoYWVsIFNjb3R0IiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9lMzA1NjEzYmI0ZWI3NTdlMjU2ODk2M2MzMGYxOTllZT9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE1MzEyMzg0NjYsImV4cCI6MTUzMTI0MjA2Nn0.nWQrabzH2cZyu8TqVuYAUzfW1ig5DOdzXiJSYPbA4gw"
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDBhMDdmODUxODU5MzIzNzg1OTA2OSIsIm5hbWUiOiJKaW0gSGFscGVydCIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNmQyNWQ5YzI5Y2U3NmZlZjZlYjNlODg3MmYwZjQyMTA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNTMxMzI2Mjc4LCJleHAiOjE1MzEzMjk4Nzh9.1IhJAaAK-9TNVQHBelmp-cMKcjrrbM7y-hL_rrJFpuw"
               },
               mode: "cors"
             })
               .then(res => res.json())
               .then(data => console.log(data))
               .catch(err => console.log(err));
-            this.setState({
-              redirect: true
-            });
+            this.setState({ redirect: true });
           },
           logout: () => {
             <Redirect to="/login" />;
