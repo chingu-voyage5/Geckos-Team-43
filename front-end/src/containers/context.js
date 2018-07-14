@@ -17,7 +17,13 @@ class MyProvider extends Component {
     loggedIn: false,
     loading: true,
     userProfile: userProfile,
-    redirect: false
+    redirect: false,
+    handle: "",
+    company: "",
+    website: "",
+    githubusername: "",
+    skills: "",
+    interests: []
   };
 
   render() {
@@ -113,27 +119,34 @@ class MyProvider extends Component {
           },
           handleUpdate: e => {
             e.preventDefault();
-            const user = {
-              email: this.state.email,
-              password: this.state.password,
-              userProfile: this.state.userProfile,
-              bio: this.state.bio
+            const profile = {
+              location: this.state.location,
+              bio: this.state.bio,
+              handle: this.state.handle,
+              company: this.state.company,
+              website: this.state.website,
+              githubusername: this.state.githubusername,
+              skills: this.state.skills,
+              interests: this.state.interests
             };
-            const update = {
-              handle: "some handle"
-            };
-            if (this.state.bio !== "") update.bio = this.state.bio;
+            console.log(profile);
+            // const update = {
+            //   bio: "",
+            //   location: ""
+            // };
+            if (this.state.bio !== "") profile.bio = this.state.bio;
+            if (this.state.handle !== "") profile.handle = this.state.handle;
             if (this.state.interests !== "")
-              update.interests = this.state.interests;
+              profile.interests = this.state.interests;
             fetch("api/profile", {
               method: "POST",
-              body: JSON.stringify(update),
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
                 Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDBhMDdmODUxODU5MzIzNzg1OTA2OSIsIm5hbWUiOiJKaW0gSGFscGVydCIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNmQyNWQ5YzI5Y2U3NmZlZjZlYjNlODg3MmYwZjQyMTA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNTMxMzI2Mjc4LCJleHAiOjE1MzEzMjk4Nzh9.1IhJAaAK-9TNVQHBelmp-cMKcjrrbM7y-hL_rrJFpuw"
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDBhMDdmODUxODU5MzIzNzg1OTA2OSIsIm5hbWUiOiJKaW0gSGFscGVydCIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNmQyNWQ5YzI5Y2U3NmZlZjZlYjNlODg3MmYwZjQyMTA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNTMxNTg3NjE4LCJleHAiOjE1MzE1OTEyMTh9.8OGZyfGkuQ6HMwi480Fg80TEtqmgqFVPSHQvQW_kezE"
               },
+              body: JSON.stringify(profile),
               mode: "cors"
             })
               .then(res => res.json())
@@ -144,6 +157,9 @@ class MyProvider extends Component {
           logout: () => {
             <Redirect to="/login" />;
             this.setState({ loggedIn: false });
+          },
+          goBackToProfile: () => {
+            <Redirect to={`/user/${this.state.userId}`} />;
           }
         }}
       >
