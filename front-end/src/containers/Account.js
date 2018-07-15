@@ -15,74 +15,83 @@ import {
 
 const Account = () => (
   <MyContext.Consumer>
-    {user => (
+    {({ goBackToProfile, handleUpdate, handleChange, state }) => (
       <div className="wrapper">
         <Breadcrumb>
           <MenuItem>
-            <Link to={`/user/${user.state.userId}`}>Back to Profile</Link>
+            <Button onClick={goBackToProfile}>Back to Profile</Button>
           </MenuItem>
         </Breadcrumb>
         <div className="">
           <h5>Account Settings</h5>
-          <form onSubmit={user.handleUpdate}>
+          <form onSubmit={handleUpdate}>
             <Row>
               <Input
                 s={8}
                 label="Full Name"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 name="name"
                 validate
                 placholder="Your Full Name"
-                defaultValue={user.state.name}
+                defaultValue={state.name}
               />
               <Input
                 s={8}
                 label="Email"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 name="email"
                 validate
                 placholder="Your Email"
-                defaultValue={user.state.email}
+                defaultValue={state.email}
+              />
+              <Input
+                s={8}
+                label="Username"
+                onChange={handleChange}
+                name="handle"
+                validate
+                placholder="Your Username"
+                defaultValue={state.handle}
               />
               <Input
                 s={8}
                 label="Location"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 name="location"
                 validate
                 placholder="Your Location"
-                defaultValue={user.state.location}
+                defaultValue={state.location}
               />
               <Input
                 type="password"
                 s={8}
                 label="Password"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 name="password"
                 validate
                 placholder="Your Password"
-                defaultValue={user.state.password}
+                defaultValue={state.password}
               />
               <Input
                 s={8}
                 label="Member Since"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 defaultValue="April 1 2018"
                 disabled
               />
               <Input
                 s={8}
                 label="Interests"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 name="interests"
                 type="textarea"
               />
               <Input
                 s={8}
                 label="Bio"
-                onChange={user.handleChange}
+                onChange={handleChange}
                 name="bio"
-                defaultValue={user.state.bio}
+                defaultValue={state.bio}
                 type="textarea"
               />
               <Input
