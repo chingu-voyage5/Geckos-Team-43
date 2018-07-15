@@ -19,6 +19,7 @@ class Header extends Component {
                 <Link to={"/login"} onClick={logout}>
                   {this.props.login}
                 </Link>
+                <Link to={"/add-event"}>Create an Event</Link>
                 <img
                   alt=""
                   src={this.props.userProfile}
