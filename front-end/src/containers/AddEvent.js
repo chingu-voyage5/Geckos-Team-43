@@ -4,42 +4,71 @@ import logo from "../images/LeetUplogo.png";
 import "./index.css";
 import { Breadcrumb, MenuItem, Input, Button } from "react-materialize";
 import { Redirect } from "react-router-dom";
+import NotLogged from "../components/NotLogged";
 
 const AddEvent = () => (
   <MyContext.Consumer>
-    {({ goBackToProfile, state }) => (
-      <div className="wrapper">
-        <Breadcrumb>
-          <MenuItem>
-            <Button onClick={goBackToProfile}>Back to Profile</Button>
-          </MenuItem>
-        </Breadcrumb>
-        <div>
-          <h5>Create an Event</h5>
+    {({ goBackToProfile, handleChange, handleCreateEvent, state }) =>
+      state.loggedIn ? (
+        <div className="wrapper">
+          <Breadcrumb>
+            <MenuItem>
+              <Button onClick={goBackToProfile}>Back to Profile</Button>
+            </MenuItem>
+          </Breadcrumb>
+          <div>
+            <h5>Create an Event</h5>
+          </div>
+          <form onSubmit={handleCreateEvent}>
+            <input
+              name="eventTitle"
+              placeholder="Add Event Title"
+              type="text"
+              onChange={handleChange}
+              value={state.eventTitle}
+            />
+            <input
+              name="eventOwner"
+              placeholder="Add Event Host"
+              type="text"
+              onChange={handleChange}
+              value={state.eventOwner}
+            />
+            <input
+              name="eventDate"
+              placeholder="Add Event Date"
+              type="text"
+              onChange={handleChange}
+              value={state.eventDate}
+            />
+            <input
+              name="eventType"
+              placeholder="Add Event Type"
+              type="text"
+              onChange={handleChange}
+              value={state.eventType}
+            />
+            <input
+              name="eventLocation"
+              placeholder="Add Event Location"
+              type="text"
+              onChange={handleChange}
+              value={state.eventLocation}
+            />
+            <textarea
+              name="eventDetails"
+              placeholder="Add Event Description"
+              onChange={handleChange}
+              value={state.eventDetails}
+            />
+            <input type="submit" className="btn" value="Create Event" />
+          </form>
+          {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}
         </div>
-        <form>
-          <input name="eventTitle" placeholder="Add Event Title" type="text" />
-          <Input
-            name="on"
-            placeholder="Add Event Date"
-            type="date"
-            onChange={function(e, value) {}}
-          />
-          <input name="eventTime" placeholder="Add Event Time" type="text" />
-          <input
-            name="eventLocation"
-            placeholder="Add Event Location"
-            type="text"
-          />
-          <textarea
-            name="eventDescription"
-            placeholder="Add Event Description"
-          />
-          <input type="submit" className="btn" value="Create Event" />
-        </form>
-        {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}
-      </div>
-    )}
+      ) : (
+        <NotLogged />
+      )
+    }
   </MyContext.Consumer>
 );
 

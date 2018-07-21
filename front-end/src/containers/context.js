@@ -24,6 +24,12 @@ class MyProvider extends Component {
     githubusername: "",
     skills: "",
     interests: [],
+    eventTitle: "",
+    eventDetails: "",
+    eventType: "",
+    eventLocation: "",
+    eventDate: "",
+    eventOwner: "",
     errors: null
   };
 
@@ -158,6 +164,37 @@ class MyProvider extends Component {
             })
               .then(res => res.json())
               .then(data => console.log(data))
+              .catch(err => console.log(err));
+          },
+          handleCreateEvent: e => {
+            e.preventDefault();
+            const newEvent = {
+              title: this.state.eventTitle,
+              details: this.state.eventDetails,
+              type: this.state.eventType,
+              location: this.state.eventLocation,
+              eventDate: this.state.eventDate,
+              user: this.state.eventOwner
+            };
+
+            fetch("api/events", {
+              method: "POST",
+              body: JSON.stringify(newEvent),
+              headers: {
+                "Content-Type": "application/json",
+                //token goes here
+                Authorization:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDBhMDdmODUxODU5MzIzNzg1OTA2OSIsIm5hbWUiOiJKaW0gSGFscGVydCIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNmQyNWQ5YzI5Y2U3NmZlZjZlYjNlODg3MmYwZjQyMTA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNTMxNTg3NjE4LCJleHAiOjE1MzE1OTEyMTh9.8OGZyfGkuQ6HMwi480Fg80TEtqmgqFVPSHQvQW_kezE"
+              },
+              mode: "cors"
+            })
+              .then(data => data.json())
+              .then(newEvent => {
+                this.setState({
+                  loading: false
+                });
+                console.log(newEvent);
+              })
               .catch(err => console.log(err));
           },
           logout: () => {
