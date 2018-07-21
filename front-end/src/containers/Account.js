@@ -2,7 +2,7 @@ import React from "react";
 import { MyContext } from "./context.js";
 import logo from "../images/LeetUplogo.png";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
   Breadcrumb,
   MenuItem,
@@ -19,7 +19,7 @@ const Account = () => (
       <div className="wrapper">
         <Breadcrumb>
           <MenuItem>
-            <Button onClick={goBackToProfile}>Back to Profile</Button>
+           <Button onClick={goBackToProfile}>Back to Profile</Button>
           </MenuItem>
         </Breadcrumb>
         <div className="">
@@ -117,6 +117,9 @@ const Account = () => (
             </Button>
           </div>
         </div>
+        {
+          state.redirect ? <Redirect to={`/user/${state.userId}`}/> : ''
+        }
       </div>
     )}
   </MyContext.Consumer>
