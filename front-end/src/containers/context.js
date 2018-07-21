@@ -109,17 +109,19 @@ class MyProvider extends Component {
                         userProfile: `http:${data.avatar}`
                       });
                     });
-                }
-                else {
-                  this.setState({ errors: user })
-                  if(this.state.errors.email) alert(this.state.errors.email);
-                  if(this.state.errors.password) alert(this.state.errors.password);
+                } else {
+                  this.setState({ errors: user });
+                  if (this.state.errors.email) alert(this.state.errors.email);
+                  if (this.state.errors.password)
+                    alert(this.state.errors.password);
                 }
               })
               .catch(err => console.log(err));
           },
           updateAccount: () => {
-            this.setState({ redirect: true }, () => this.setState({ redirect: false }));
+            this.setState({ redirect: true }, () =>
+              this.setState({ redirect: false })
+            );
             //history.push("/edit");
           },
           handleUpdate: e => {
@@ -163,7 +165,9 @@ class MyProvider extends Component {
             this.setState({ loggedIn: false });
           },
           goBackToProfile: () => {
-            this.setState({ redirect: true }, () => this.setState({ redirect: false }));
+            this.setState({ redirect: true }, () =>
+              this.setState({ redirect: false })
+            );
           }
         }}
       >

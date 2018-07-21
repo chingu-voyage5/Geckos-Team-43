@@ -2,12 +2,18 @@ import React from "react";
 import { MyContext } from "./context.js";
 import logo from "../images/LeetUplogo.png";
 import "./index.css";
-import { Input } from "react-materialize";
+import { Breadcrumb, MenuItem, Input, Button } from "react-materialize";
+import { Redirect } from "react-router-dom";
 
 const AddEvent = () => (
   <MyContext.Consumer>
-    {({ state }) => (
+    {({ goBackToProfile, state }) => (
       <div className="wrapper">
+        <Breadcrumb>
+          <MenuItem>
+            <Button onClick={goBackToProfile}>Back to Profile</Button>
+          </MenuItem>
+        </Breadcrumb>
         <div>
           <h5>Create an Event</h5>
         </div>
@@ -31,6 +37,7 @@ const AddEvent = () => (
           />
           <input type="submit" className="btn" value="Create Event" />
         </form>
+        {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}
       </div>
     )}
   </MyContext.Consumer>
