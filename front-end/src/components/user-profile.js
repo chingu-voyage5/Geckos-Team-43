@@ -5,10 +5,12 @@ import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
 import Loading from "./Loading";
 import { Redirect } from "react-router";
+import NotLogged from './NotLogged';
 
 const UserProfile = () => (
   <MyContext.Consumer>
     {({ updateAccount, state }) => (
+      state.loggedIn ?
       <div className="user-profile wrapper">
         <div className="user-info">
           <h1>{state.name}</h1>
@@ -42,6 +44,8 @@ const UserProfile = () => (
         </div>
         {state.redirect ? <Redirect to="/edit" /> : null}
       </div>
+      :
+      <NotLogged/>
     )}
   </MyContext.Consumer>
 );

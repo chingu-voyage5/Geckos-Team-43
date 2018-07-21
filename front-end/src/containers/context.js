@@ -23,7 +23,8 @@ class MyProvider extends Component {
     website: "",
     githubusername: "",
     skills: "",
-    interests: []
+    interests: [],
+    errors: null
   };
 
   render() {
@@ -109,12 +110,16 @@ class MyProvider extends Component {
                       });
                     });
                 }
-                console.log(user);
+                else {
+                  this.setState({ errors: user })
+                  if(this.state.errors.email) alert(this.state.errors.email);
+                  if(this.state.errors.password) alert(this.state.errors.password);
+                }
               })
               .catch(err => console.log(err));
           },
           updateAccount: () => {
-            this.setState({ redirect: true });
+            this.setState({ redirect: true }, () => this.setState({ redirect: false }));
             //history.push("/edit");
           },
           handleUpdate: e => {
@@ -152,14 +157,13 @@ class MyProvider extends Component {
               .then(res => res.json())
               .then(data => console.log(data))
               .catch(err => console.log(err));
-            this.setState({ redirect: true });
           },
           logout: () => {
             <Redirect to="/login" />;
             this.setState({ loggedIn: false });
           },
           goBackToProfile: () => {
-            <Redirect to={`/user/${this.state.userId}`} />;
+            this.setState({ redirect: true }, () => this.setState({ redirect: false }));
           }
         }}
       >
