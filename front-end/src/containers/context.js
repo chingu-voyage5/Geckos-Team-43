@@ -23,7 +23,8 @@ class MyProvider extends Component {
     website: "",
     githubusername: "",
     skills: "",
-    interests: []
+    interests: [],
+    errors: null
   };
 
   render() {
@@ -109,7 +110,11 @@ class MyProvider extends Component {
                       });
                     });
                 }
-                console.log(user);
+                else {
+                  this.setState({ errors: user })
+                  if(this.state.errors.email) alert(this.state.errors.email);
+                  if(this.state.errors.password) alert(this.state.errors.password);
+                }
               })
               .catch(err => console.log(err));
           },
