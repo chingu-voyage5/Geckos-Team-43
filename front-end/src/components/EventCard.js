@@ -1,6 +1,5 @@
 import React from "react";
 import { MyContext } from "../containers/context.js";
-import { Button } from "react-materialize";
 import "../containers/index.css";
 import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";

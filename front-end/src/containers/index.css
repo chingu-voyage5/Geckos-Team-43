@@ -20,7 +20,7 @@ header .logo {
   display: none;
 }
 .navbar {
-  grid-column: 14 / span 4;
+  grid-column: 12 / span 8;
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1px;
@@ -32,6 +32,7 @@ nav a {
   text-decoration: none;
   color: rgba(46, 62, 72, 0.6);
   align-self: center;
+  margin-right: 10px;
 }
 nav a:hover {
   color: #00a2c7;
@@ -192,15 +193,25 @@ nav a:hover {
   grid-column: 7 / span 1;
 }
 
-.interests {
+.interests,
+.skills,
+.more-info {
   grid-column: 1 / span 6;
 }
-
+.more-info {
+  display: flex;
+  justify-content: space-between;
+}
+.more-info > div {
+  margin-right: 15px;
+}
 .user-bio {
   display: flex;
   justify-content: center;
   grid-column: 7;
+  grid-row: 2;
   flex-direction: column;
+  align-items: center;
 }
 
 .user-bio p {
@@ -281,6 +292,10 @@ nav a:hover {
   margin-top: 0;
   font-weight: bolder;
 }
+.preloader {
+  display: flex;
+  justify-content: center;
+}
 /*Footer*/
 .footer {
   background: #363e48;
@@ -359,4 +374,7 @@ nav a:hover {
 .danger hr {
   margin-bottom: 50px;
   border: 1px solid #ed6762;
+}
+strong {
+  font-weight: 900;
 }

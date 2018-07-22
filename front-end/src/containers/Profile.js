@@ -4,9 +4,6 @@ import UserProfile from "../components/user-profile";
 import Header from "../components/Header";
 import { MyContext } from "./context.js"; //importing the context
 
-const hide = {
-  display: "none"
-};
 class Profile extends Component {
   /*componentDidMount() {
     // const data = {

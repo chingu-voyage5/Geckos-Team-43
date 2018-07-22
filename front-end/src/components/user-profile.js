@@ -6,48 +6,83 @@ import "../containers/index.css";
 import Loading from "./Loading";
 import { Redirect } from "react-router";
 import NotLogged from "./NotLogged";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => (
   <MyContext.Consumer>
     {({ updateAccount, state }) =>
       state.loggedIn ? (
-        <div className="user-profile wrapper">
-          <div className="user-info">
-            <h1>{state.name}</h1>
-            <p>
-              <b>Location:</b>
-              <br />
-              {state.location}
-            </p>
-            <p>
-              <b>Email:</b>
-              <br />
-              {state.email}
-            </p>
-            <p>
-              <b>Leetup member since:</b>
-              <br /> April 1 2018
-            </p>
-          </div>
-          <div className="img-container">
-            <img src={logo} alt="" />
-          </div>
-          <div className="interests">
-            <h3>Interests</h3>
-            <div className="wrapper">
-              {state.interests.map(interest => (
-                <Chip key={interest.id}>{interest}</Chip>
-              ))}
+        state.loading === true ? (
+          <Loading />
+        ) : (
+          <div className="user-profile wrapper">
+            <div className="user-info">
+              <h1>{state.name}</h1>
+              <p>
+                <b>Location:</b>
+                <br />
+                {state.location}
+              </p>
+              <p>
+                <b>Email:</b>
+                <br />
+                {state.email}
+              </p>
+              <p>
+                <b>Leetup member since:</b>
+                <br /> {state.dateJoined}
+              </p>
             </div>
+            <div className="img-container">
+              <img src={logo} alt="" />
+            </div>
+            <div className="interests">
+              <h3>Interests</h3>
+              <div className="wrapper">
+                {state.interests.map(interest => (
+                  <Chip key={interest.id}>{interest}</Chip>
+                ))}
+              </div>
+            </div>
+            <div className="skills">
+              <h3>skills</h3>
+              <p>{state.skills ? state.skills : "Update to add skills"}</p>
+            </div>
+            <div className="more-info">
+              <div>
+                <strong>Company</strong>
+                <p>
+                  {state.company ? state.company : "Update to add company name"}
+                </p>
+              </div>
+              <div>
+                <strong>Website</strong>
+                {state.website ? (
+                  <Link to={state.website} target="_blank">
+                    {state.website}
+                  </Link>
+                ) : (
+                  <p>Update to add website link</p>
+                )}
+              </div>
+              <div>
+                <strong>Github Username</strong>
+                <p>
+                  {state.githubusername
+                    ? state.githubusername
+                    : "Update to add Github Username"}
+                </p>
+              </div>
+            </div>
+            <div className="user-bio">
+              <p>{state.bio ? state.bio : "Update to add bio"}</p>
+              <Button className="addBio" waves="light" onClick={updateAccount}>
+                Update Account
+              </Button>
+            </div>
+            {state.redirect ? <Redirect to="/edit" /> : null}
           </div>
-          <div className="user-bio">
-            <p>{state.bio ? state.bio : ""}</p>
-            <Button className="addBio" waves="light" onClick={updateAccount}>
-              Update Account
-            </Button>
-          </div>
-          {state.redirect ? <Redirect to="/edit" /> : null}
-        </div>
+        )
       ) : (
         <NotLogged />
       )

@@ -1,8 +1,7 @@
 import React from "react";
 import { MyContext } from "./context.js";
-import logo from "../images/LeetUplogo.png";
 import "./index.css";
-import { Breadcrumb, MenuItem, Input, Button } from "react-materialize";
+import { Breadcrumb, MenuItem, Button } from "react-materialize";
 import { Redirect } from "react-router-dom";
 import NotLogged from "../components/NotLogged";
 
