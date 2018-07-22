@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import userProfile from "../images/User.jpeg";
-import { Redirect } from "react-router";
-import history from "../components/History";
 
 const MyContext = React.createContext();
 
@@ -14,6 +12,7 @@ class MyProvider extends Component {
     bio: "",
     userId: "",
     location: "",
+    dateJoined: "",
     loggedIn: false,
     loading: true,
     userProfile: userProfile,
@@ -78,9 +77,6 @@ class MyProvider extends Component {
           },
           handleLogin: e => {
             e.preventDefault();
-            this.setState({
-              loading: true
-            });
             const user = {
               email: this.state.email,
               password: this.state.password
@@ -108,28 +104,30 @@ class MyProvider extends Component {
                     .then(data => {
                       this.setState({
                         loggedIn: true,
-                        loading: false,
+                        loading: true,
                         name: data.name,
                         userId: data.id,
                         userProfile: `http:${data.avatar}`
                       });
                     });
-                    this.setState({ token: user.token })
-                    fetch("api/profile", {
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: this.state.token
-                        },
-                      mode: "cors"
-                    })
+                  this.setState({ token: user.token });
+                  fetch("api/profile", {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: this.state.token
+                    },
+                    mode: "cors"
+                  })
                     .then(res => res.json())
                     .then(profile => {
-                      console.log(profile)
+                      console.log(profile);
                       this.setState({
+                        loading: false,
                         bio: profile.bio,
                         handle: profile.handle,
-                        interests: profile.interests
-                      })
+                        interests: profile.interests,
+                        dateJoined: profile.date
+                      });
                     })
                     .catch(err => console.log(err));
                 } else {
@@ -145,7 +143,6 @@ class MyProvider extends Component {
             this.setState({ redirect: true }, () =>
               this.setState({ redirect: false })
             );
-            //history.push("/edit");
           },
           handleUpdate: e => {
             e.preventDefault();
@@ -164,6 +161,13 @@ class MyProvider extends Component {
             //   bio: "",
             //   location: ""
             // };
+            if (this.state.location !== "")
+              profile.location = this.state.location;
+            if (this.state.company !== "") profile.company = this.state.company;
+            if (this.state.skills !== "") profile.skills = this.state.skills;
+            if (this.state.githubusername !== "")
+              profile.githubusername = this.state.githubusername;
+            if (this.state.website !== "") profile.website = this.state.website;
             if (this.state.bio !== "") profile.bio = this.state.bio;
             if (this.state.handle !== "") profile.handle = this.state.handle;
             if (this.state.interests !== "")
@@ -200,7 +204,7 @@ class MyProvider extends Component {
                 "Content-Type": "application/json",
                 //token goes here
                 Authorization: this.state.token
-                },
+              },
               mode: "cors"
             })
               .then(data => data.json())
@@ -213,7 +217,6 @@ class MyProvider extends Component {
               .catch(err => console.log(err));
           },
           logout: () => {
-            <Redirect to="/login" />;
             this.setState({ loggedIn: false });
           },
           goBackToProfile: () => {

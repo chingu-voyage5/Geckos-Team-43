@@ -1,17 +1,8 @@
 import React from "react";
 import { MyContext } from "./context.js";
-import logo from "../images/LeetUplogo.png";
 import "./index.css";
 import { Redirect } from "react-router-dom";
-import {
-  Breadcrumb,
-  MenuItem,
-  Row,
-  Input,
-  Button,
-  Col,
-  Tag
-} from "react-materialize";
+import { Breadcrumb, MenuItem, Row, Input, Button } from "react-materialize";
 
 const Account = () => (
   <MyContext.Consumer>
@@ -76,8 +67,32 @@ const Account = () => (
                 s={8}
                 label="Member Since"
                 onChange={handleChange}
-                defaultValue="April 1 2018"
+                defaultValue={state.dateJoined}
                 disabled
+              />
+              <Input
+                s={8}
+                label="GithubUsername"
+                onChange={handleChange}
+                name="githubusername"
+                placholder="Your Github Username"
+                defaultValue={state.githubusername}
+              />
+              <Input
+                s={8}
+                label="Company"
+                onChange={handleChange}
+                name="company"
+                placholder="Your Company name"
+                defaultValue={state.company}
+              />
+              <Input
+                s={8}
+                label="Website"
+                onChange={handleChange}
+                name="website"
+                placholder="Your website"
+                defaultValue={state.website}
               />
               <Input
                 s={8}
@@ -85,6 +100,14 @@ const Account = () => (
                 onChange={handleChange}
                 name="interests"
                 defaultValue={state.interests}
+                type="textarea"
+              />
+              <Input
+                s={8}
+                label="Skills"
+                onChange={handleChange}
+                name="skills"
+                defaultValue={state.skills}
                 type="textarea"
               />
               <Input

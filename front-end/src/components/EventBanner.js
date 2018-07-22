@@ -38,7 +38,7 @@ const EventBanner = () => (
         <Card
           horizontal
           header={<img src={logo} className="logo" alt="logo" />}
-          actions={[<a href="#">Share this event</a>]}
+          actions={[<a href="/">Share this event</a>]}
         >
           <h5>Event Title</h5>
           <EventDetails />

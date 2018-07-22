@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
 import { MyContext } from "../containers/context.js"; //importing the context
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
