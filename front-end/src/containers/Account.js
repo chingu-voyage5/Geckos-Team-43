@@ -84,6 +84,7 @@ const Account = () => (
                 label="Interests"
                 onChange={handleChange}
                 name="interests"
+                defaultValue={state.interests}
                 type="textarea"
               />
               <Input

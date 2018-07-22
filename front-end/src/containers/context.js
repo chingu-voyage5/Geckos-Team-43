@@ -30,7 +30,8 @@ class MyProvider extends Component {
     eventLocation: "",
     eventDate: "",
     eventOwner: "",
-    errors: null
+    errors: null,
+    token: null
   };
 
   render() {
@@ -82,9 +83,7 @@ class MyProvider extends Component {
             });
             const user = {
               email: this.state.email,
-              password: this.state.password,
-              userProfile: this.state.userProfile,
-              location: this.state.location
+              password: this.state.password
             };
 
             fetch("api/users/login", {
@@ -115,6 +114,24 @@ class MyProvider extends Component {
                         userProfile: `http:${data.avatar}`
                       });
                     });
+                    this.setState({ token: user.token })
+                    fetch("api/profile", {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: this.state.token
+                        },
+                      mode: "cors"
+                    })
+                    .then(res => res.json())
+                    .then(profile => {
+                      console.log(profile)
+                      this.setState({
+                        bio: profile.bio,
+                        handle: profile.handle,
+                        interests: profile.interests
+                      })
+                    })
+                    .catch(err => console.log(err));
                 } else {
                   this.setState({ errors: user });
                   if (this.state.errors.email) alert(this.state.errors.email);
@@ -156,8 +173,7 @@ class MyProvider extends Component {
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDBhMDdmODUxODU5MzIzNzg1OTA2OSIsIm5hbWUiOiJKaW0gSGFscGVydCIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNmQyNWQ5YzI5Y2U3NmZlZjZlYjNlODg3MmYwZjQyMTA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNTMxNTg3NjE4LCJleHAiOjE1MzE1OTEyMTh9.8OGZyfGkuQ6HMwi480Fg80TEtqmgqFVPSHQvQW_kezE"
+                Authorization: this.state.token
               },
               body: JSON.stringify(profile),
               mode: "cors"
@@ -183,9 +199,8 @@ class MyProvider extends Component {
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDBhMDdmODUxODU5MzIzNzg1OTA2OSIsIm5hbWUiOiJKaW0gSGFscGVydCIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNmQyNWQ5YzI5Y2U3NmZlZjZlYjNlODg3MmYwZjQyMTA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNTMxNTg3NjE4LCJleHAiOjE1MzE1OTEyMTh9.8OGZyfGkuQ6HMwi480Fg80TEtqmgqFVPSHQvQW_kezE"
-              },
+                Authorization: this.state.token
+                },
               mode: "cors"
             })
               .then(data => data.json())
