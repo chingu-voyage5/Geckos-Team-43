@@ -98,7 +98,8 @@ router.post("/login", (req, res) => {
         const payload = {
           id: user.id,
           name: user.name,
-          avatar: user.avatar
+          avatar: user.avatar,
+          date: user.date
         };
         //sign token
         jwt.sign(
@@ -133,6 +134,7 @@ router.get(
       id: req.user.id,
       name: req.user.name,
       email: req.user.email,
+      date: req.user.date,
       avatar: req.user.avatar
     });
   }
