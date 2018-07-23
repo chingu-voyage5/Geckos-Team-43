@@ -21,7 +21,7 @@ class MyProvider extends Component {
     company: "",
     website: "",
     githubusername: "",
-    skills: "",
+    skills: [],
     interests: [],
     eventTitle: "",
     eventDetails: "",
@@ -144,7 +144,32 @@ class MyProvider extends Component {
               this.setState({ redirect: false })
             );
           },
-          handleUpdate: e => {
+          handleUpdateUser: e => {
+            e.preventDefault();
+            const updateUser = {
+              name: this.state.name,
+              email: this.state.email,
+              password: this.state.password,
+              password2: this.state.password2,
+              avatar: this.state.avatar
+            };
+            console.log(updateUser);
+
+            fetch("api/users/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                //token goes here
+                Authorization: this.state.token
+              },
+              body: JSON.stringify(updateUser),
+              mode: "cors"
+            })
+              .then(res => res.json())
+              .then(data => console.log(data))
+              .catch(err => console.log(err));
+          },
+          handleUpdateProfile: e => {
             e.preventDefault();
             const profile = {
               location: this.state.location,
