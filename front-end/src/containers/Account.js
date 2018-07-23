@@ -3,6 +3,7 @@ import { MyContext } from "./context.js";
 import "./index.css";
 import { Redirect } from "react-router-dom";
 import { Breadcrumb, MenuItem, Row, Input, Button } from "react-materialize";
+import NotLogged from "../components/NotLogged"
 
 const Account = () => (
   <MyContext.Consumer>
@@ -205,6 +206,8 @@ const Account = () => (
         </div>
         {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}
       </div>
+      :
+      <NotLogged/>
     )}
   </MyContext.Consumer>
 );
