@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../containers/index.css";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Home from "../containers/Home";
 import Signup from "../containers/sign-up";
 import Login from "../containers/login";
@@ -20,7 +20,8 @@ class App extends Component {
       <MyProvider>
         <BrowserRouter>
           <div>
-            <ul className="Navlinks">
+            {/*
+              <ul className="Navlinks">
               <li>
                 <Link to="/" component={Home}>
                   Home
@@ -57,6 +58,7 @@ class App extends Component {
                 </Link>
               </li>
             </ul>
+            */}
             <Route exact path="/" component={Home} />
             <Route path="/user/:userId" component={UserProfile} />
             <Route path="/event/:eventId" component={EventPage} />

@@ -74,6 +74,8 @@ router.post(
       profileFields.interests = req.body.interests.split(',');
     }
 
+
+
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
         //update
