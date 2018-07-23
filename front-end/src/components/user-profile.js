@@ -34,19 +34,19 @@ const UserProfile = () => (
               </p>
             </div>
             <div className="img-container">
-              <img src={logo} alt="" />
+              <img src={state.userProfile} alt="" />
             </div>
             <div className="interests">
               <h3>Interests</h3>
               <div className="wrapper">
-                {state.interests.split(',').map(interest => (
-                  <Chip key={interest}>{interest}</Chip>
-                ))}
+                {state.interests
+                  .split(",")
+                  .map(interest => <Chip key={interest.id}>{interest}</Chip>)}
               </div>
             </div>
             <div className="skills">
               <h3>skills</h3>
-              <p>{state.skills ? state.skills : "Update to add skills"}</p>
+              <div className="wrapper">{state.skills}</div>
             </div>
             <div className="more-info">
               <div>
@@ -58,9 +58,11 @@ const UserProfile = () => (
               <div>
                 <strong>Website</strong>
                 {state.website ? (
-                  <Link to={state.website} target="_blank">
-                    {state.website}
-                  </Link>
+                  <p>
+                    <Link to={state.website} target="_blank">
+                      {state.website}
+                    </Link>
+                  </p>
                 ) : (
                   <p>Update to add website link</p>
                 )}

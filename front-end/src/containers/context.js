@@ -124,7 +124,7 @@ class MyProvider extends Component {
                         loading: false,
                         bio: profile.bio,
                         handle: profile.handle,
-                        interests: profile.interests.join(','),
+                        interests: profile.interests.join(","),
                         dateJoined: profile.date
                       });
                     })
@@ -143,7 +143,24 @@ class MyProvider extends Component {
               this.setState({ redirect: false })
             );
           },
-          handleUpdate: e => {
+          handleUpdateUser: e => {
+            e.preventDefault();
+            const updateUser = {};
+            fetch("api/users/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                //token goes here
+                Authorization: this.state.token
+              },
+              body: JSON.stringify(updateUser),
+              mode: "cors"
+            })
+              .then(res => res.json())
+              .then(data => console.log(data))
+              .catch(err => console.log(err));
+          },
+          handleUpdateProfile: e => {
             e.preventDefault();
             const profile = {};
 
@@ -156,10 +173,8 @@ class MyProvider extends Component {
             if (this.state.website !== "") profile.website = this.state.website;
             if (this.state.bio !== "") profile.bio = this.state.bio;
             if (this.state.handle !== "") profile.handle = this.state.handle;
-            if (this.state.interests !== ""){
-                profile.interests = this.state.interests;
-              }
-    
+            if (this.state.interests !== "")
+              profile.interests = this.state.interests;
             fetch("api/profile", {
               method: "POST",
               headers: {
