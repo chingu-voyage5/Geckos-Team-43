@@ -7,9 +7,14 @@ import NotLogged from "../components/NotLogged"
 
 const Account = () => (
   <MyContext.Consumer>
-    {({ goBackToProfile, handleUpdate, handleChange, state }) => (
-        state.loggedIn ?
-        <div className="wrapper">
+    {({
+      goBackToProfile,
+      handleUpdateProfile,
+      handleUpdateUser,
+      handleChange,
+      state
+    }) => (
+      <div className="wrapper">
         <Breadcrumb>
           <MenuItem>
             <Button onClick={goBackToProfile}>Back to Profile</Button>
@@ -17,7 +22,63 @@ const Account = () => (
         </Breadcrumb>
         <div className="">
           <h5>Account Settings</h5>
-          <form onSubmit={handleUpdate}>
+          <form onSubmit={handleUpdateUser}>
+            <Row>
+              <Input
+                s={8}
+                label="Full Name"
+                onChange={handleChange}
+                name="name"
+                validate
+                placholder="Your Full Name"
+                defaultValue={state.name}
+              />
+              <Input
+                s={8}
+                label="Email"
+                onChange={handleChange}
+                name="email"
+                validate
+                placholder="Your Email"
+                defaultValue={state.email}
+              />
+              <Input
+                type="password"
+                s={8}
+                label="Password"
+                onChange={handleChange}
+                name="password"
+                validate
+                placholder="Your Password"
+                defaultValue={state.password}
+              />
+              <Input
+                s={8}
+                label="Member Since"
+                onChange={handleChange}
+                defaultValue={state.dateJoined}
+                disabled
+              />
+              <Input
+                s={12}
+                label="Photo"
+                name="photo"
+                type="file"
+                className="photo"
+              />
+              <Input
+                type="submit"
+                name="email"
+                defaultValue="Submit"
+                className="blue btn"
+              />
+            </Row>
+          </form>
+        </div>
+
+        <div className="">
+          <h5>Profile Settings</h5>
+          <form onSubmit={handleUpdateProfile}>
             <Row>
               <Input
                 s={8}
