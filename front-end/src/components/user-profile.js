@@ -39,8 +39,8 @@ const UserProfile = () => (
             <div className="interests">
               <h3>Interests</h3>
               <div className="wrapper">
-                {state.interests.map(interest => (
-                  <Chip key={interest.id}>{interest}</Chip>
+                {state.interests.split(',').map(interest => (
+                  <Chip key={interest}>{interest}</Chip>
                 ))}
               </div>
             </div>

@@ -120,12 +120,11 @@ class MyProvider extends Component {
                   })
                     .then(res => res.json())
                     .then(profile => {
-                      console.log(profile);
                       this.setState({
                         loading: false,
                         bio: profile.bio,
                         handle: profile.handle,
-                        interests: profile.interests,
+                        interests: profile.interests.join(','),
                         dateJoined: profile.date
                       });
                     })
@@ -146,21 +145,8 @@ class MyProvider extends Component {
           },
           handleUpdate: e => {
             e.preventDefault();
-            const profile = {
-              location: this.state.location,
-              bio: this.state.bio,
-              handle: this.state.handle,
-              company: this.state.company,
-              website: this.state.website,
-              githubusername: this.state.githubusername,
-              skills: this.state.skills,
-              interests: this.state.interests
-            };
-            console.log(profile);
-            // const update = {
-            //   bio: "",
-            //   location: ""
-            // };
+            const profile = {};
+
             if (this.state.location !== "")
               profile.location = this.state.location;
             if (this.state.company !== "") profile.company = this.state.company;
@@ -170,8 +156,10 @@ class MyProvider extends Component {
             if (this.state.website !== "") profile.website = this.state.website;
             if (this.state.bio !== "") profile.bio = this.state.bio;
             if (this.state.handle !== "") profile.handle = this.state.handle;
-            if (this.state.interests !== "")
-              profile.interests = this.state.interests;
+            if (this.state.interests !== ""){
+                profile.interests = this.state.interests;
+              }
+    
             fetch("api/profile", {
               method: "POST",
               headers: {
