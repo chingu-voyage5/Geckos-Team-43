@@ -21,7 +21,7 @@ class MyProvider extends Component {
     company: "",
     website: "",
     githubusername: "",
-    skills: "",
+    skills: [],
     interests: [],
     eventTitle: "",
     eventDetails: "",
@@ -125,7 +125,12 @@ class MyProvider extends Component {
                         bio: profile.bio,
                         handle: profile.handle,
                         interests: profile.interests.join(","),
-                        dateJoined: profile.date
+                        dateJoined: profile.date,
+                        website: profile.website,
+                        location: profile.location,
+                        skills: profile.skills.join(","),
+                        githubusername: profile.githubusername,
+                        company: profile.company
                       });
                     })
                     .catch(err => console.log(err));

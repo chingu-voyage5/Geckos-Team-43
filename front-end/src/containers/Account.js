@@ -70,7 +70,7 @@ const Account = () => (
                 <Input
                   type="submit"
                   name="email"
-                  defaultValue="Submit"
+                  defaultValue="Save"
                   className="blue btn"
                 />
               </Row>
@@ -81,24 +81,6 @@ const Account = () => (
             <h5>Profile Settings</h5>
             <form onSubmit={handleUpdateProfile}>
               <Row>
-                <Input
-                  s={8}
-                  label="Full Name"
-                  onChange={handleChange}
-                  name="name"
-                  validate
-                  placholder="Your Full Name"
-                  defaultValue={state.name}
-                />
-                <Input
-                  s={8}
-                  label="Email"
-                  onChange={handleChange}
-                  name="email"
-                  validate
-                  placholder="Your Email"
-                  defaultValue={state.email}
-                />
                 <Input
                   s={8}
                   label="Username"
@@ -116,23 +98,6 @@ const Account = () => (
                   validate
                   placholder="Your Location"
                   defaultValue={state.location}
-                />
-                <Input
-                  type="password"
-                  s={8}
-                  label="Password"
-                  onChange={handleChange}
-                  name="password"
-                  validate
-                  placholder="Your Password"
-                  defaultValue={state.password}
-                />
-                <Input
-                  s={8}
-                  label="Member Since"
-                  onChange={handleChange}
-                  defaultValue={state.dateJoined}
-                  disabled
                 />
                 <Input
                   s={8}
@@ -186,7 +151,7 @@ const Account = () => (
                   s={8}
                   type="submit"
                   name="email"
-                  defaultValue="Submit"
+                  defaultValue="Save"
                   className="blue btn"
                 />
               </Row>

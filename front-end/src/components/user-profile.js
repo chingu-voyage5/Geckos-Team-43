@@ -1,7 +1,6 @@
 import React from "react";
 import { MyContext } from "../containers/context.js";
 import { Button, Chip } from "react-materialize";
-import logo from "../images/LeetUplogo.png";
 import "../containers/index.css";
 import Loading from "./Loading";
 import { Redirect } from "react-router";
@@ -40,13 +39,23 @@ const UserProfile = () => (
               <h3>Interests</h3>
               <div className="wrapper">
                 {state.interests
-                  .split(",")
-                  .map(interest => <Chip key={interest.id}>{interest}</Chip>)}
+                  ? state.interests
+                      .split(",")
+                      .map(interest => (
+                        <Chip key={interest.id}>{interest}</Chip>
+                      ))
+                  : "Add your interests"}
               </div>
             </div>
             <div className="skills">
               <h3>skills</h3>
-              <div className="wrapper">{state.skills}</div>
+              <div className="wrapper">
+                {state.skills
+                  ? state.skills
+                      .split(",")
+                      .map(skill => <Chip key={skill.id}>{skill}</Chip>)
+                  : "Add your skills"}
+              </div>
             </div>
             <div className="more-info">
               <div>
