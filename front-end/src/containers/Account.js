@@ -4,6 +4,7 @@ import "./index.css";
 import { Redirect } from "react-router-dom";
 import { Breadcrumb, MenuItem, Row, Input, Button } from "react-materialize";
 import NotLogged from "../components/NotLogged";
+import DeleteConfirmation from "../components/DeleteConfirmation";
 
 const Account = () => (
   <MyContext.Consumer>
@@ -12,6 +13,7 @@ const Account = () => (
       handleUpdateProfile,
       handleUpdateUser,
       handleChange,
+      openDeleteConfirmation,
       state
     }) =>
       state.loggedIn ? (
@@ -159,9 +161,14 @@ const Account = () => (
             <div className="danger">
               <hr />
               <h6>Only proceed if you would like to close your account</h6>
-              <Button waves="light" className="red">
+              <Button
+                waves="light"
+                className="red"
+                onClick={openDeleteConfirmation}
+              >
                 Delete Your Account
               </Button>
+              {state.deleteAccount === true ? <DeleteConfirmation /> : ""}
             </div>
           </div>
           {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}

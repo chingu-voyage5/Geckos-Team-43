@@ -382,3 +382,13 @@ nav a:hover {
 strong {
   font-weight: 900;
 }
+.delete {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin-top: 30px;
+}
+.delete button {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
