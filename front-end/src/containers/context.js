@@ -30,7 +30,8 @@ class MyProvider extends Component {
     eventDate: "",
     eventOwner: "",
     errors: null,
-    token: null
+    token: null,
+    deleteAccount: false
   };
 
   render() {
@@ -223,6 +224,37 @@ class MyProvider extends Component {
                 console.log(newEvent);
               })
               .catch(err => console.log(err));
+          },
+          handleAccountDelete: e => {
+            fetch("api/profile", {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                //token goes here
+                Authorization: this.state.token
+              },
+              body: JSON.stringify({
+                userId: this.state.userId
+              })
+            })
+              .then(res => res.json())
+              .then(data => {
+                this.setState({ loggedIn: false });
+                console.log(data);
+              })
+              .catch(err => console.log(err));
+          },
+          openDeleteConfirmation: e => {
+            e.preventDefault();
+            this.setState({
+              deleteAccount: true
+            });
+          },
+          handleClose: e => {
+            e.preventDefault();
+            this.setState({
+              deleteAccount: false
+            });
           },
           logout: () => {
             this.setState({ loggedIn: false });

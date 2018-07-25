@@ -39,11 +39,9 @@ const UserProfile = () => (
               <h3>Interests</h3>
               <div className="wrapper">
                 {state.interests
-                  ? state.interests
-                      .split(",")
-                      .map(interest => (
-                        <Chip key={interest.id}>{interest}</Chip>
-                      ))
+                  ? state.interests.map(interest => (
+                      <Chip key={interest.id}>{interest}</Chip>
+                    ))
                   : "Add your interests"}
               </div>
             </div>
@@ -51,9 +49,9 @@ const UserProfile = () => (
               <h3>skills</h3>
               <div className="wrapper">
                 {state.skills
-                  ? state.skills
-                      .split(",")
-                      .map(skill => <Chip key={skill.id}>{skill}</Chip>)
+                  ? state.skills.map(skill => (
+                      <Chip key={skill.id}>{skill}</Chip>
+                    ))
                   : "Add your skills"}
               </div>
             </div>
