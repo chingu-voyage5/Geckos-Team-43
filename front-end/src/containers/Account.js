@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { Breadcrumb, MenuItem, Row, Input, Button } from "react-materialize";
 import NotLogged from "../components/NotLogged";
 import DeleteConfirmation from "../components/DeleteConfirmation";
+import moment from "moment";
 
 const Account = () => (
   <MyContext.Consumer>
@@ -59,7 +60,7 @@ const Account = () => (
                   s={8}
                   label="Member Since"
                   onChange={handleChange}
-                  defaultValue={state.dateJoined}
+                  defaultValue={moment(state.dateJoined).format("MM/DD/YYYY")}
                   disabled
                 />
                 <Input

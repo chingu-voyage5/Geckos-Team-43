@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import { Redirect } from "react-router";
 import NotLogged from "./NotLogged";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const UserProfile = () => (
   <MyContext.Consumer>
@@ -29,7 +30,8 @@ const UserProfile = () => (
               </p>
               <p>
                 <b>Leetup member since:</b>
-                <br /> {state.dateJoined}
+                <br />
+                {moment(state.dateJoined).format("MM/DD/YYYY")}
               </p>
             </div>
             <div className="img-container">
