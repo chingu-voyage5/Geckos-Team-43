@@ -4,18 +4,19 @@ import { Button } from "react-materialize";
 import "../containers/index.css";
 import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
+import moment from "moment";
 
 const HostDetails = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="host-details">
         <Link to={"/my-book-club-123"} className="brand">
           <img src={logo} className="logo" alt="logo" />
         </Link>
         <Button>Attend</Button>
-        <p>Posted on: Monday, June 25</p>
+        <p>Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}</p>
         <p>
-          Venue<Link to={"/"}>ABC 123 Street</Link>
+          Venue<Link to={"/"}>{state.eventLocation}</Link>
         </p>
       </div>
     )}
@@ -24,22 +25,18 @@ const HostDetails = () => (
 
 const EventDetails = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="event-details">
-        <p>Monday, June 25, 6:30pm</p>
+        <p>{moment(state.eventDate).format("MM/DD/YYYY")}, 6:30pm</p>
         <h4>
-          <Link to={"/my-book-club-123"}>My Book Club</Link>
+          <Link to={`{state.eventTitle}`}>{state.eventTitle}</Link>
         </h4>
         <p>
-          Hosted by <Link to={"/"}>John Smith</Link>
+          Hosted by <Link to={"/"}>{state.eventOwner}</Link>
         </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
-          distinctio nulla eos cupiditate at laboriosam facere quaerat, quasi
-          non et cumque totam expedita! Ex maiores, sequi obcaecati odit enim
-          dolorum?
-        </p>
+        <p>{state.eventDetails}</p>
         <p>Attendees</p>
+        {state.eventParticipants ? "has attendees" : "no attendees"}
       </div>
     )}
   </MyContext.Consumer>
@@ -47,10 +44,11 @@ const EventDetails = () => (
 
 const EventImage = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="event-brand">
         <p className="card event-date">
-          <span className="date">25</span>JUN
+          <span className="date">{moment(state.eventDate).format("DD")}</span>
+          {moment(state.eventDate).format("MMM")}
         </p>
       </div>
     )}
@@ -59,7 +57,7 @@ const EventImage = () => (
 
 const UpcomingEvent = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="upcoming-event-card card">
         <EventImage />
         <EventDetails />

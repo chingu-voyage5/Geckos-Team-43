@@ -3,14 +3,15 @@ import { MyContext } from "../containers/context.js";
 import "../containers/index.css";
 import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
+import moment from "moment";
 
 const HostDetails = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="host-details">
-        <p>Posted on: Monday, June 25</p>
+        <p>Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}</p>
         <p>
-          Hosted by <Link to={"/"}>John Smith</Link>
+          Hosted by <Link to={"/"}>{state.eventOwner}</Link>
         </p>
       </div>
     )}
@@ -19,11 +20,11 @@ const HostDetails = () => (
 
 const EventDetails = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="event-details">
-        <p>Monday, June 25, 6:30pm</p>
+        <p>{moment(state.eventDate).format("MM/DD/YYYY")}, 6:30pm</p>
         <p>
-          <Link to={"/event/my-book-club-123"}>My Book Club</Link>
+          <Link to={`{state.eventTitle}`}>{state.eventTitle}</Link>
         </p>
       </div>
     )}
@@ -32,12 +33,13 @@ const EventDetails = () => (
 
 const EventImage = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="event-brand">
         <p className="card event-date">
-          <span className="date">25</span>JUN
+          <span className="date">{moment(state.eventDate).format("DD")}</span>
+          {moment(state.eventDate).format("MMM")}
         </p>
-        <Link to={"/event/my-book-club-123"} className="brand">
+        <Link to={`/event/{state.eventTitle}`} className="brand">
           <img src={logo} className="logo" alt="logo" />
         </Link>
       </div>
@@ -47,7 +49,7 @@ const EventImage = () => (
 
 const EventCard = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="event-card card">
         <EventImage />
         <EventDetails />

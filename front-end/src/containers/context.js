@@ -29,6 +29,7 @@ class MyProvider extends Component {
     eventLocation: "",
     eventDate: "",
     eventOwner: "",
+    eventParticipants: {},
     errors: null,
     token: null,
     deleteAccount: false
