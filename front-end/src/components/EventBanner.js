@@ -4,14 +4,15 @@ import { Col, Card } from "react-materialize";
 import "../containers/index.css";
 import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
+import moment from "moment";
 
 const HostDetails = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="host-details">
-        <p>Posted on: Monday, June 25</p>
+        <p>Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}</p>
         <p>
-          Hosted by <Link to={"/"}>John Smith</Link>
+          Hosted by <Link to={"/"}>{state.eventOwner}</Link>
         </p>
       </div>
     )}
@@ -20,11 +21,11 @@ const HostDetails = () => (
 
 const EventDetails = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <div className="event-details">
-        <p>Monday, June 25, 6:30pm</p>
+        <p>{moment(state.eventDate).format("MM/DD/YYYY")} 10pm</p>
         <p>
-          <Link to={"/my-book-club-123"}>My Book Club</Link>
+          <Link to={`{state.eventTitle}`}>{state.eventTitle}</Link>
         </p>
       </div>
     )}
@@ -33,14 +34,14 @@ const EventDetails = () => (
 
 const EventBanner = () => (
   <MyContext.Consumer>
-    {user => (
+    {state => (
       <Col m={7} s={12}>
         <Card
           horizontal
           header={<img src={logo} className="logo" alt="logo" />}
           actions={[<a href="/">Share this event</a>]}
         >
-          <h5>Event Title</h5>
+          <h5>{state.eventTitle}</h5>
           <EventDetails />
           <HostDetails />
         </Card>
