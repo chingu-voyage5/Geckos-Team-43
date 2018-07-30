@@ -62,7 +62,7 @@ const AddEvent = () => (
             />
             <input type="submit" className="btn" value="Create Event" />
           </form>
-          {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}
+          {state.redirect ? <Redirect to={`/event/${state.eventId}`} /> : ""}
         </div>
       ) : (
         <NotLogged />
