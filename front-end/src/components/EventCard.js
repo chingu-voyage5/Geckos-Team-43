@@ -9,10 +9,13 @@ const HostDetails = () => (
   <MyContext.Consumer>
     {state => (
       <div className="host-details">
-        <p>Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}</p>
-        <p>
+        <strong>
+          Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}
+        </strong>
+        <br />
+        <strong>
           Hosted by <Link to={"/"}>{state.eventOwner}</Link>
-        </p>
+        </strong>
       </div>
     )}
   </MyContext.Consumer>

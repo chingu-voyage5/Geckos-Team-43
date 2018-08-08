@@ -10,10 +10,13 @@ const HostDetails = () => (
   <MyContext.Consumer>
     {state => (
       <div className="host-details">
-        <p>Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}</p>
-        <p>
+        <strong>
+          Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}
+        </strong>
+        <br />
+        <strong>
           Hosted by <Link to={"/"}>{state.eventOwner}</Link>
-        </p>
+        </strong>
       </div>
     )}
   </MyContext.Consumer>
@@ -23,7 +26,7 @@ const EventDetails = () => (
   <MyContext.Consumer>
     {state => (
       <div className="event-details">
-        <p>{moment(state.eventDate).format("MM/DD/YYYY")} 10pm</p>
+        <p>{moment(state.eventDate).format("MM/DD/YYYY")}</p>
         <p>
           <Link to={`{state.eventTitle}`}>{state.eventTitle}</Link>
         </p>
@@ -37,11 +40,11 @@ const EventBanner = () => (
     {state => (
       <Col m={7} s={12}>
         <Card
-          horizontal
+          vertical
           header={<img src={logo} className="logo" alt="logo" />}
           actions={[<a href="/">Share this event</a>]}
         >
-          <h5>{state.eventTitle}</h5>
+          <strong>{state.eventTitle}</strong>
           <EventDetails />
           <HostDetails />
         </Card>

@@ -24,7 +24,7 @@ export default function Home() {
       <Header title="Leet Up" login="Login" signup="Sign Up" />
       <Banner
         title="What do you love?"
-        tagline="Do more of it with Meetup"
+        tagline="Do more of it with Leetup"
         signup="Sign Up"
       />
       <Popular />

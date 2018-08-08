@@ -6,15 +6,17 @@ body {
 header {
   background: #fff;
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: 95px;
+  max-width: 1200px;
 }
 header h1 {
   text-indent: -100000px;
   font-size: 5px;
 }
 header .logo {
-  width: 100%;
+  width: 120px;
+  margin-left: 30px;
 }
 .Navlinks {
   display: none;
@@ -52,6 +54,7 @@ nav a:hover {
   text-shadow: 1px 1px 1px #000;
   background-position: center;
   background-size: cover;
+  position: relative;
 }
 .banner .btn {
   border-radius: 5px;
@@ -195,7 +198,6 @@ nav a:hover {
 }
 .img-container > img {
   width: 50%;
-  height: 50%;
   border-radius: 50%;
 }
 .interests,
@@ -252,11 +254,12 @@ nav a:hover {
   box-shadow: none;
 }
 .event-date {
-  width: 20%;
+  width: 40px;
   text-align: center;
   border-radius: 5px;
   margin-bottom: -60px;
   margin-left: 10px;
+  margin-right: 10px;
 }
 .event-date > .date {
   display: block;
@@ -264,9 +267,16 @@ nav a:hover {
   font-size: 1.3em;
   font-weight: bold;
 }
+.event-details .card > img {
+  width: 100%;
+}
+.upcoming-event-card > .host-details {
+  display: flex;
+  flex-direction: column;
+}
 .category-cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   grid-gap: 20px;
 }
 .user-guide {
@@ -391,4 +401,47 @@ strong {
 .delete button {
   margin-bottom: 10px;
   margin-top: 10px;
+}
+.back-button {
+  margin-left: -20px;
+}
+@media only screen and (max-width: 760px) {
+  .navbar img {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .wrapper {
+    max-width: 600px;
+  }
+  .popular-events {
+    max-width: 960px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    max-width: 260px;
+  }
+  .img-container {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .user-bio {
+    grid-column: 1 / -1;
+  }
+  .more-info {
+    display: block;
+  }
+  .useful-links {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    margin-left: 30px;
+  }
+  .info {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    margin-left: 30px;
+    align-items: normal;
+    justify-items: normal;
+  }
 }

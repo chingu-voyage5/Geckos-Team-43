@@ -14,10 +14,14 @@ const HostDetails = () => (
           <img src={logo} className="logo" alt="logo" />
         </Link>
         <Button>Attend</Button>
-        <p>Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}</p>
-        <p>
+        <br />
+        <strong>
+          Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}
+        </strong>
+        <br />
+        <strong>
           Venue<Link to={"/"}>{state.eventLocation}</Link>
-        </p>
+        </strong>
       </div>
     )}
   </MyContext.Consumer>
@@ -27,16 +31,16 @@ const EventDetails = () => (
   <MyContext.Consumer>
     {state => (
       <div className="event-details">
-        <p>{moment(state.eventDate).format("MM/DD/YYYY")}, 6:30pm</p>
+        <p>{moment(state.eventDate).format("MM/DD/YYYY")}</p>
         <h4>
           <Link to={`{state.eventTitle}`}>{state.eventTitle}</Link>
         </h4>
-        <p>
+        <strong>
           Hosted by <Link to={"/"}>{state.eventOwner}</Link>
-        </p>
+        </strong>
         <p>{state.eventDetails}</p>
-        <p>Attendees</p>
-        {state.eventParticipants ? "has attendees" : "no attendees"}
+        <strong>Attendees</strong>
+        <p>{state.eventParticipants ? "" : "There are no attendees"}</p>
       </div>
     )}
   </MyContext.Consumer>
