@@ -65,13 +65,7 @@ const Account = () => (
                   disabled
                 />
                 <Input
-                  s={12}
-                  label="Photo"
-                  name="photo"
-                  type="file"
-                  className="photo"
-                />
-                <Input
+                  s={8}
                   type="submit"
                   name="email"
                   defaultValue="Save"
