@@ -25,6 +25,8 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventTitle}
+              pattern=".{10,}"
+              required
             />
             <input
               name="eventOwner"
@@ -53,12 +55,16 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventLocation}
+              pattern=".{10,}"
+              required
             />
             <textarea
               name="eventDetails"
               placeholder="Add Event Description"
               onChange={handleChange}
               value={state.eventDetails}
+              pattern=".{10,}"
+              required
             />
             <input type="submit" className="btn" value="Create Event" />
           </form>

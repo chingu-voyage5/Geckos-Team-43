@@ -220,16 +220,26 @@ class MyProvider extends Component {
             })
               .then(data => data.json())
               .then(newEvent => {
+                console.log(newEvent)
                 this.setState({
                   loading: false,
-                  eventId: newEvent._id
+                  eventId: newEvent._id,
+                  eventTitle: newEvent.title,
+                  eventDetails: newEvent.details,
+                  eventType: newEvent.type,
+                  eventLocation: newEvent.location,
+                  eventDate: newEvent.eventDate,
+                  eventOwner: newEvent.owner,
+
+                }, () => {
+                  console.log(this.state, 'state')
+                  this.setState({ redirect: true },
+                    () => {
+                      this.setState({ redirect: false })
+                    })
                 });
-                console.log(newEvent);
               })
               .catch(err => console.log(err));
-            this.setState({ redirect: true }, () =>
-              this.setState({ redirect: false })
-            );
           },
           handleAccountDelete: e => {
             fetch("api/profile", {
