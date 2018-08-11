@@ -279,6 +279,14 @@ nav a:hover {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   grid-gap: 20px;
 }
+.category-brand {
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+.category-brand:hover {
+  box-shadow: 1px 1px 11px grey;
+  transform: scale(0.95);
+}
 .user-guide {
   text-align: center;
   background: #0f1722;

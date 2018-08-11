@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../containers/index.css";
 import { MyContext } from "../containers/context.js"; //importing the context
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const year = new Date().getFullYear();
 
