@@ -7,21 +7,6 @@ import EventBanner from "../components/EventBanner";
 import UpcomingEvent from "../components/UpcomingEvent";
 
 class EventPage extends React.Component {
-  componentDidMount() {
-    fetch(`api/posts/${MyContext.eventId}`, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      mode: "cors"
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(err => {
-        console.log("Error happened during fetching!", err);
-      });
-  }
   render() {
     return (
       <MyContext.Consumer>

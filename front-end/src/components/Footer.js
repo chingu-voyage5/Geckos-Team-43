@@ -59,27 +59,27 @@ class Footer extends Component {
                 <ul className="social">
                   <li>
                     <Link to={"/"}>
-                      <i class="fab fa-facebook-f">{""}</i>
+                      <i className="fab fa-facebook-f">{""}</i>
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="fab fa-twitter" />
+                      <i className="fab fa-twitter" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="fab fa-instagram">{""}</i>
+                      <i className="fab fa-instagram">{""}</i>
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="fab fa-youtube" />
+                      <i className="fab fa-youtube" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <i class="fab fa-twitch" />
+                      <i className="fab fa-twitch" />
                     </Link>
                   </li>
                 </ul>

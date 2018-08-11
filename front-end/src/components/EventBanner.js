@@ -6,38 +6,30 @@ import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
 import moment from "moment";
 
-const HostDetails = () => (
-  <MyContext.Consumer>
-    {state => (
+const HostDetails = ({datePosted}) => (
       <div className="host-details">
         <strong>
-          Posted on: {moment(state.eventDate).format("MM/DD/YYYY")}
+          Posted on: {datePosted}
         </strong>
         <br />
         <strong>
-          Hosted by <Link to={"/"}>{state.eventOwner}</Link>
+          Hosted by <Link to={"/"}>Some owner</Link>
         </strong>
       </div>
-    )}
-  </MyContext.Consumer>
 );
 
-const EventDetails = () => (
-  <MyContext.Consumer>
-    {state => (
+const EventDetails = ({date, title}) => (
       <div className="event-details">
-        <p>{moment(state.eventDate).format("MM/DD/YYYY")}</p>
+        <p>{moment(date).format("MM/DD/YYYY")}</p>
         <p>
-          <Link to={`{state.eventTitle}`}>{state.eventTitle}</Link>
+          <Link to={`{state.eventTitle}`}>{title}</Link>
         </p>
       </div>
-    )}
-  </MyContext.Consumer>
 );
 
 const EventBanner = () => (
   <MyContext.Consumer>
-    {state => (
+    {({state}) => (
       <Col m={7} s={12}>
         <Card
           vertical
@@ -45,8 +37,8 @@ const EventBanner = () => (
           actions={[<a href="/">Share this event</a>]}
         >
           <strong>{state.eventTitle}</strong>
-          <EventDetails />
-          <HostDetails />
+          <EventDetails date={state.eventDate} title={state.eventTitle}/>
+          <HostDetails datePosted={state.eventDate}/>
         </Card>
       </Col>
     )}
