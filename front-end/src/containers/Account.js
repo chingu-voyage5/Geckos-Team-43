@@ -2,7 +2,7 @@ import React from "react";
 import { MyContext } from "./context.js";
 import "./index.css";
 import { Redirect } from "react-router-dom";
-import { Breadcrumb, MenuItem, Row, Input, Button } from "react-materialize";
+import { MenuItem, Row, Input, Button } from "react-materialize";
 import NotLogged from "../components/NotLogged";
 import DeleteConfirmation from "../components/DeleteConfirmation";
 import moment from "moment";
@@ -19,11 +19,12 @@ const Account = () => (
     }) =>
       state.loggedIn ? (
         <div className="wrapper">
-          <Breadcrumb>
-            <MenuItem>
-              <Button onClick={goBackToProfile}>Back to Profile</Button>
-            </MenuItem>
-          </Breadcrumb>
+          <MenuItem className="back-button">
+            <Button onClick={goBackToProfile}>
+              <i class="fas fa-long-arrow-alt-left" />
+            </Button>
+          </MenuItem>
+
           <div className="">
             <h5>Account Settings</h5>
             <form onSubmit={handleUpdateUser}>

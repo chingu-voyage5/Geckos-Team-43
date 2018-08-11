@@ -60,27 +60,27 @@ class Footer extends Component {
                 <ul className="social">
                   <li>
                     <Link to={"/"}>
-                      <FontAwesomeIcon icon="check-square" />
+                      <i class="fab fa-facebook-f">{""}</i>
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <FontAwesomeIcon icon="check-square" />
+                      <i class="fab fa-twitter" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <FontAwesomeIcon icon="check-square" />
+                      <i class="fab fa-instagram">{""}</i>
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <FontAwesomeIcon icon="check-square" />
+                      <i class="fab fa-youtube" />
                     </Link>
                   </li>
                   <li>
                     <Link to={"/"}>
-                      <FontAwesomeIcon icon="check-square" />
+                      <i class="fab fa-twitch" />
                     </Link>
                   </li>
                 </ul>

@@ -1,7 +1,7 @@
 import React from "react";
 import { MyContext } from "./context.js";
 import "./index.css";
-import { Breadcrumb, MenuItem, Button } from "react-materialize";
+import { MenuItem, Button } from "react-materialize";
 import { Redirect } from "react-router-dom";
 import NotLogged from "../components/NotLogged";
 
@@ -10,11 +10,11 @@ const AddEvent = () => (
     {({ goBackToProfile, handleChange, handleCreateEvent, state }) =>
       state.loggedIn ? (
         <div className="wrapper">
-          <Breadcrumb>
-            <MenuItem>
-              <Button onClick={goBackToProfile}>Back to Profile</Button>
-            </MenuItem>
-          </Breadcrumb>
+          <MenuItem className="back-button">
+            <Button onClick={goBackToProfile}>
+              <i class="fas fa-long-arrow-alt-left" />
+            </Button>
+          </MenuItem>
           <div>
             <h5>Create an Event</h5>
           </div>
@@ -62,7 +62,7 @@ const AddEvent = () => (
             />
             <input type="submit" className="btn" value="Create Event" />
           </form>
-          {state.redirect ? <Redirect to={`/user/${state.userId}`} /> : ""}
+          {state.redirect ? <Redirect to={`/event/${state.eventId}`} /> : ""}
         </div>
       ) : (
         <NotLogged />

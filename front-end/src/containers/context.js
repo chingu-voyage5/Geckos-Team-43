@@ -23,6 +23,7 @@ class MyProvider extends Component {
     githubusername: "",
     skills: [],
     interests: [],
+    eventId: "",
     eventTitle: "",
     eventDetails: "",
     eventType: "",
@@ -220,11 +221,15 @@ class MyProvider extends Component {
               .then(data => data.json())
               .then(newEvent => {
                 this.setState({
-                  loading: false
+                  loading: false,
+                  eventId: newEvent._id
                 });
                 console.log(newEvent);
               })
               .catch(err => console.log(err));
+            this.setState({ redirect: true }, () =>
+              this.setState({ redirect: false })
+            );
           },
           handleAccountDelete: e => {
             fetch("api/profile", {
