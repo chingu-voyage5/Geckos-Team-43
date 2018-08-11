@@ -25,6 +25,9 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventTitle}
+              required
+              minlength="10"
+              maxlength="60"
             />
             <input
               name="eventOwner"
@@ -32,6 +35,7 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventOwner}
+              required
             />
             <input
               name="eventDate"
@@ -39,6 +43,8 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventDate}
+              required
+              pattern="^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$"
             />
             <input
               name="eventType"
@@ -46,6 +52,7 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventType}
+              required
             />
             <input
               name="eventLocation"
@@ -53,12 +60,18 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventLocation}
+              required
+              minlength="10"
+              maxlength="100"
             />
             <textarea
               name="eventDetails"
               placeholder="Add Event Description"
               onChange={handleChange}
               value={state.eventDetails}
+              required
+              minlength="10"
+              maxlength="600"
             />
             <input type="submit" className="btn" value="Create Event" />
           </form>
