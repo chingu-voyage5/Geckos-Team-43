@@ -9,6 +9,7 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: 95px;
   max-width: 1200px;
+  margin: 0 auto;
 }
 header h1 {
   text-indent: -100000px;

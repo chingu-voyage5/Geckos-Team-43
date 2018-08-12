@@ -32,7 +32,8 @@ class MyProvider extends Component {
     eventOwner: "",
     eventParticipants: {},
     errors: null,
-    deleteAccount: false
+    deleteAccount: false,
+    back: false
   };
 
   render() {
@@ -232,22 +233,23 @@ class MyProvider extends Component {
             })
               .then(data => data.json())
               .then(newEvent => {
-                this.setState({
-                  loading: false,
-                  eventId: newEvent._id,
-                  eventTitle: newEvent.title,
-                  eventDetails: newEvent.details,
-                  eventType: newEvent.type,
-                  eventLocation: newEvent.location,
-                  eventDate: newEvent.eventDate,
-                  eventOwner: newEvent.owner,
-
-                }, () => {
-                  this.setState({ redirect: true },
-                    () => {
-                      this.setState({ redirect: false })
-                    })
-                });
+                this.setState(
+                  {
+                    loading: false,
+                    eventId: newEvent._id,
+                    eventTitle: newEvent.title,
+                    eventDetails: newEvent.details,
+                    eventType: newEvent.type,
+                    eventLocation: newEvent.location,
+                    eventDate: newEvent.eventDate,
+                    eventOwner: newEvent.owner
+                  },
+                  () => {
+                    this.setState({ redirect: true }, () => {
+                      this.setState({ redirect: false });
+                    });
+                  }
+                );
               })
               .catch(err => console.log(err));
           },
@@ -272,15 +274,11 @@ class MyProvider extends Component {
           },
           openDeleteConfirmation: e => {
             e.preventDefault();
-            this.setState({
-              deleteAccount: true
-            });
+            this.setState({ deleteAccount: true });
           },
           handleClose: e => {
             e.preventDefault();
-            this.setState({
-              deleteAccount: false
-            });
+            this.setState({ deleteAccount: false });
           },
           logout: () => {
             this.setState({ loggedIn: false });
@@ -289,6 +287,9 @@ class MyProvider extends Component {
             this.setState({ redirect: true }, () =>
               this.setState({ redirect: false })
             );
+          },
+          goBack: () => {
+            this.setState({ back: true }, () => this.setState({ back: false }));
           }
         }}
       >

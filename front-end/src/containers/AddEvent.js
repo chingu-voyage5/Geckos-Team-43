@@ -7,11 +7,11 @@ import NotLogged from "../components/NotLogged";
 
 const AddEvent = () => (
   <MyContext.Consumer>
-    {({ goBackToProfile, handleChange, handleCreateEvent, state }) =>
+    {({ goBack, handleChange, handleCreateEvent, state }) =>
       state.loggedIn ? (
         <div className="wrapper">
           <MenuItem className="back-button">
-            <Button onClick={goBackToProfile}>
+            <Button onClick={goBack}>
               <i className="fas fa-long-arrow-alt-left" />
             </Button>
           </MenuItem>
@@ -73,6 +73,7 @@ const AddEvent = () => (
             <input type="submit" className="btn" value="Create Event" />
           </form>
           {state.redirect ? <Redirect to={`/event/${state.eventId}`} /> : ""}
+          {state.back ? <Redirect to={`/user/${state.userId}`} /> : ""}
         </div>
       ) : (
         <NotLogged />
