@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "make": "source ./config/app-env",
-    "start": "source ./config/app-env && nodemon server"
+    "start": "source ./config/app-env && node server",
+    "heroku-postbuild": "cd front-end && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
