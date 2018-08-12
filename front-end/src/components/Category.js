@@ -3,25 +3,26 @@ import { MyContext } from "../containers/context.js";
 import "../containers/index.css";
 import { Link } from "react-router-dom";
 import logo from "../images/LeetUplogo.png";
+import { PromiseProvider } from "mongoose";
 
-const CategoryCard = () => (
+const CategoryCard = props => (
   <MyContext.Consumer>
     {user => (
       <div className="category-brand">
         <Link to={"/"} className="brand">
           <img src={logo} className="logo" alt="logo" />
         </Link>
-        <p>Outdoors & Adventure</p>
+        <p>{props.title}</p>
       </div>
     )}
   </MyContext.Consumer>
 );
 
-const Category = () => (
+const Category = props => (
   <MyContext.Consumer>
     {user => (
       <div className="category-card card">
-        <CategoryCard />
+        <CategoryCard title={props.catTitle} />
       </div>
     )}
   </MyContext.Consumer>

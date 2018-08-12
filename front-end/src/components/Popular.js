@@ -40,18 +40,18 @@ const Popular = () => (
         </div>
         <ExploreHeading />
         <div className="category-cards">
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
+          <Category catTitle="Tech Job Fair" />
+          <Category catTitle="Blockchain Developers" />
+          <Category catTitle="React JS Events" />
+          <Category catTitle="Data Science Events" />
+          <Category catTitle="Women in Tech meetups" />
+          <Category catTitle="Product Management" />
+          <Category catTitle="PHP Devs" />
+          <Category catTitle="Ruby on Rails Events" />
+          <Category catTitle="Vue JS meetups" />
+          <Category catTitle="Node.js Developers" />
+          <Category catTitle="UX Designers & Developers" />
+          <Category catTitle="Artifical Intelligence Events" />
         </div>
       </div>
     )}

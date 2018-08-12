@@ -122,18 +122,31 @@ class MyProvider extends Component {
                   })
                     .then(res => res.json())
                     .then(profile => {
-                      this.setState({
-                        loading: false,
-                        bio: profile.bio,
-                        handle: profile.handle,
-                        interests: profile.interests.join(","),
-                        dateJoined: profile.date,
-                        website: profile.website,
-                        location: profile.location,
-                        skills: profile.skills.join(","),
-                        githubusername: profile.githubusername,
-                        company: profile.company
-                      });
+                      if (profile.interests) {
+                        this.setState({
+                          loading: false,
+                          bio: profile.bio,
+                          handle: profile.handle,
+                          interests: profile.interests.join(","),
+                          dateJoined: profile.date,
+                          website: profile.website,
+                          location: profile.location,
+                          skills: profile.skills.join(","),
+                          githubusername: profile.githubusername,
+                          company: profile.company
+                        });
+                      } else {
+                        this.setState({
+                          loading: false,
+                          bio: profile.bio,
+                          handle: profile.handle,
+                          dateJoined: profile.date,
+                          website: profile.website,
+                          location: profile.location,
+                          githubusername: profile.githubusername,
+                          company: profile.company
+                        });
+                      }
                     })
                     .catch(err => console.log(err));
                 } else {
