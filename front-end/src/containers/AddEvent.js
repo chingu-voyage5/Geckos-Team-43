@@ -25,8 +25,8 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventTitle}
-              pattern=".{10,}"
               required
+              pattern=".{10,}"
             />
             <input
               name="eventOwner"
@@ -34,6 +34,7 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventOwner}
+              required
             />
             <input
               name="eventDate"
@@ -41,6 +42,8 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventDate}
+              required
+              pattern="^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$"
             />
             <input
               name="eventType"
@@ -48,6 +51,7 @@ const AddEvent = () => (
               type="text"
               onChange={handleChange}
               value={state.eventType}
+              required
             />
             <input
               name="eventLocation"

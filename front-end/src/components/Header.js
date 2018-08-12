@@ -18,7 +18,7 @@ class Header extends Component {
               <nav className="navbar">
                 <Link to={"/add-event"}>Create an Event</Link>
                 <Link to={"/login"} onClick={logout}>
-                  {this.props.login}
+                  Logout
                 </Link>
                 <img
                   alt=""

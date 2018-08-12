@@ -40,7 +40,7 @@ const UserProfile = () => (
             <div className="interests">
               <h3>Interests</h3>
               <div className="wrapper">
-                {state.interests
+                {state.interests.length > 0
                   ? state.interests
                       .split(",")
                       .map(interest => (
@@ -52,7 +52,7 @@ const UserProfile = () => (
             <div className="skills">
               <h3>skills</h3>
               <div className="wrapper">
-                {state.skills
+                {state.skills.length > 0
                   ? state.skills
                       .split(",")
                       .map(skill => <Chip key={skill.id}>{skill}</Chip>)
