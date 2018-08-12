@@ -32,7 +32,6 @@ class MyProvider extends Component {
     eventOwner: "",
     eventParticipants: {},
     errors: null,
-    token: null,
     deleteAccount: false
   };
 
@@ -96,10 +95,11 @@ class MyProvider extends Component {
               .then(data => data.json())
               .then(user => {
                 if (user.token) {
+                  localStorage.token = user.token;
                   fetch("api/users/current", {
                     headers: {
                       "Content-Type": "application/json",
-                      Authorization: user.token
+                      Authorization: localStorage.token
                     },
                     mode: "cors"
                   })
@@ -113,11 +113,10 @@ class MyProvider extends Component {
                         userProfile: `http:${data.avatar}`
                       });
                     });
-                  this.setState({ token: user.token });
                   fetch("api/profile", {
                     headers: {
                       "Content-Type": "application/json",
-                      Authorization: this.state.token
+                      Authorization: localStorage.token
                     },
                     mode: "cors"
                   })
@@ -159,7 +158,7 @@ class MyProvider extends Component {
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization: this.state.token
+                Authorization: localStorage.token
               },
               body: JSON.stringify(updateUser),
               mode: "cors"
@@ -188,7 +187,7 @@ class MyProvider extends Component {
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization: this.state.token
+                Authorization: localStorage.token
               },
               body: JSON.stringify(profile),
               mode: "cors"
@@ -214,13 +213,12 @@ class MyProvider extends Component {
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization: this.state.token
+                Authorization: localStorage.token
               },
               mode: "cors"
             })
               .then(data => data.json())
               .then(newEvent => {
-                console.log(newEvent)
                 this.setState({
                   loading: false,
                   eventId: newEvent._id,
@@ -232,7 +230,6 @@ class MyProvider extends Component {
                   eventOwner: newEvent.owner,
 
                 }, () => {
-                  console.log(this.state, 'state')
                   this.setState({ redirect: true },
                     () => {
                       this.setState({ redirect: false })
@@ -247,7 +244,7 @@ class MyProvider extends Component {
               headers: {
                 "Content-Type": "application/json",
                 //token goes here
-                Authorization: this.state.token
+                Authorization: localStorage.token
               },
               body: JSON.stringify({
                 userId: this.state.userId

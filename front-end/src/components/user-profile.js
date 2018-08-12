@@ -44,7 +44,7 @@ const UserProfile = () => (
                   ? state.interests
                       .split(",")
                       .map(interest => (
-                        <Chip key={interest.id}>{interest}</Chip>
+                        <Chip key={interest}>{interest}</Chip>
                       ))
                   : "Add your interests"}
               </div>

@@ -9,7 +9,7 @@ import moment from "moment";
 const HostDetails = ({datePosted}) => (
       <div className="host-details">
         <strong>
-          Posted on: {datePosted}
+          Posted on: {moment(datePosted).format('"MM/DD/YYYY"')}
         </strong>
         <br />
         <strong>
@@ -20,7 +20,7 @@ const HostDetails = ({datePosted}) => (
 
 const EventDetails = ({date, title}) => (
       <div className="event-details">
-        <p>{moment(date).format("MM/DD/YYYY")}</p>
+        <p>{moment(date).format('"MM/DD/YYYY"')}</p>
         <p>
           <Link to={`{state.eventTitle}`}>{title}</Link>
         </p>

@@ -21,7 +21,7 @@ const Account = () => (
         <div className="wrapper">
           <MenuItem className="back-button">
             <Button onClick={goBackToProfile}>
-              <i class="fas fa-long-arrow-alt-left" />
+              <i className="fas fa-long-arrow-alt-left" />
             </Button>
           </MenuItem>
 
