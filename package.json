@@ -6,7 +6,7 @@
   "scripts": {
     "make": "source ./config/app-env",
     "start": "node server",
-    "heroku-postbuild": "cd front-end && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-end && npm run build --prefix front-end"
   },
   "author": "",
   "license": "ISC",
