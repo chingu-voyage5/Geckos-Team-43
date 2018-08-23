@@ -2,10 +2,12 @@
   "name": "geckos-team-43",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "make": "source ./config/app-env",
-    "start": "node server",
+    "client-install": "npm install --prefix front-end",
+    "start": "node server.js",
+    "client": "npm start --prefix front-end",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-end && npm run build --prefix front-end"
   },
   "author": "",
